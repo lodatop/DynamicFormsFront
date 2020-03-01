@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {ToastController, NavController} from '@ionic/angular';
-import { LoginService } from '../../services/login.service';
+import { ToastController, NavController } from '@ionic/angular';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  styleUrls: [ './login.page.scss' ],
 })
 export class LoginPage implements OnInit {
 
@@ -13,14 +13,14 @@ export class LoginPage implements OnInit {
   password: string;
 
   constructor(private router: NavController, private toast: ToastController,
-              private auth: LoginService) { }
+              private auth: AuthService) { }
 
   ngOnInit() {
   }
   
   login() {
     this.auth.onLogin(this.username, this.password).subscribe((data) => {
-      console.log(data)
+      console.log(data);
     })
   }
 }
