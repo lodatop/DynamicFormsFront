@@ -22,7 +22,7 @@ export class MenuItemsComponent implements OnInit {
   }
 
   getMenus(){
-    this.menu.getMenu().subscribe((results) => {
+    this.menu.getMenus().subscribe((results) => {
       this.list = results;
       console.log(this.list)
     })
