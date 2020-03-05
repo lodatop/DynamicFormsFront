@@ -22,13 +22,12 @@ export class MenuItemsComponent implements OnInit {
   }
 
   getMenus(){
+    this.list = [{title_menu: 'menu1', description_menu: ""}, {title_menu: 'menu2', description_menu: ""}, {title_menu: 'menu3', description_menu: ""}];
     this.menu.getMenus().subscribe((results) => {
-      this.list = results;
       console.log(this.list)
     })
   }
 
   addMenu(){}
-
 
 }

@@ -7,4 +7,4 @@ import { MenuItemsComponent } from '../menu-items/menu-items.component';
   ],
   declarations: []
 })
-export class AddMenuModule {}
+export class AddFormModule {}
