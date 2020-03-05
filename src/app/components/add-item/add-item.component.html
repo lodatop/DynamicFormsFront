@@ -1,2 +1,25 @@
-<ion-button (click)="addMenu()">menu</ion-button>
-<ion-button (click)="addForm()">form</ion-button>
+<div *ngIf="option == 0">
+    <ion-header>
+        <ion-toolbar color=primary>
+          <ion-title>Add</ion-title>
+        </ion-toolbar>
+      </ion-header>
+    <ion-button (click)="addMenu()">menu</ion-button>
+    <ion-button (click)="addForm()">form</ion-button>
+</div>
+<div *ngIf="option == 1">
+    <ion-header>
+      <ion-toolbar color=primary>
+        <ion-title>Add Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <app-add-menu></app-add-menu>
+</div>
+<div *ngIf="option == 2">
+    <ion-header>
+      <ion-toolbar color=primary>
+        <ion-title>Add Form</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <app-add-form></app-add-form>
+</div>

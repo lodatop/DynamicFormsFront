@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AddItemComponent } from '../../components/add-item/add-item.component';
 
 @Component({
   selector: 'app-add',

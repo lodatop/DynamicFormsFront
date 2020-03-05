@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { NavController } from '@ionic/angular';
 
@@ -8,16 +8,19 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./add-item.component.scss'],
 })
 export class AddItemComponent implements OnInit {
+  @Input() option: number = 0;
 
-  constructor(private router: NavController) { }
+  constructor(private router: NavController) {
+  }
 
-  ngOnInit() {}
-
+  ngOnInit() {
+  }
+  
   addMenu() {
-    this.router.navigateForward(['/views/menu']);
+    this.option = 1;
   };
 
   addForm() {
-    this.router.navigateForward(['/views/tab3']);
+    this.option = 2;
   };
 }

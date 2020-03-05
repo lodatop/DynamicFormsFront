@@ -1,0 +1,8 @@
+<ion-item>
+  <ion-label>New Form's Name</ion-label>
+  <ion-input placeholder="Form's name"></ion-input>
+</ion-item>
+<ion-label>Select which Menu it belongs to</ion-label>
+<ion-select placeholder="Select" [(ngModel)]="selected">
+  <ion-select-option *ngFor="let menu of list">{{menu}}</ion-select-option>
+</ion-select>

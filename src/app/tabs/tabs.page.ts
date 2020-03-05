@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { AddItemComponent } from '../components/add-item/add-item.component'
 
 @Component({
   selector: 'app-tabs',
@@ -9,4 +10,5 @@ export class TabsPage {
 
   constructor() {}
 
+  
 }
