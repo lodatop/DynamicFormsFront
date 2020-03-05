@@ -13,9 +13,14 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
-  },  {
-    path: 'menu',
+  },
+  {
+    path: 'views/menu',
     loadChildren: () => import('./pages/menu/menu.module').then( m => m.MenuPageModule)
+  },
+  {
+    path: 'views/add',
+    loadChildren: () => import('./pages/add/add.module').then( m => m.AddPageModule)
   }
 
 

@@ -3,12 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
-
-import { MenuPageRoutingModule } from './menu-routing.module';
-
-import { MenuPage } from './menu.page';
 import { ComponentModule } from '../../components/components.module';
 
+import { AddPageRoutingModule } from './add-routing.module';
+
+import { AddPage } from './add.page';
 
 @NgModule({
   imports: [
@@ -16,8 +15,8 @@ import { ComponentModule } from '../../components/components.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    MenuPageRoutingModule
+    AddPageRoutingModule
   ],
-  declarations: [MenuPage]
+  declarations: [AddPage]
 })
-export class MenuPageModule {}
+export class AddPageModule {}

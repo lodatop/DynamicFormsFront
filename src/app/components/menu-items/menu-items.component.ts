@@ -28,5 +28,7 @@ export class MenuItemsComponent implements OnInit {
     })
   }
 
+  addMenu(){}
+
 
 }

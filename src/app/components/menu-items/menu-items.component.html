@@ -1,17 +1,8 @@
-<ion-header>
-  <ion-toolbar color=primary>
-    <ion-title>Menus</ion-title>
-    <ion-buttons slot="start"> <ion-back-button></ion-back-button> </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <ion-list *ngIf='list?.length'>
-    <ion-item *ngFor='let menu of list'>
-      <ion-text (click)='get(menu)'>
-        <h2>{{menu.title_menu}}</h2>
-        <p>{{menu.description_menu}}</p>
-      </ion-text>
-    </ion-item>
-  </ion-list>
-</ion-content>
+<ion-list *ngIf='list?.length'>
+  <ion-item *ngFor='let menu of list'>
+    <ion-text (click)='get(menu)'>
+      <h2>{{menu.title_menu}}</h2>
+      <p>{{menu.description_menu}}</p>
+    </ion-text>
+  </ion-item>
+</ion-list>
