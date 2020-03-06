@@ -41,4 +41,42 @@ export class AuthService {
     };
    return this.http.post<Response>(`${serverUrl}/user/register`, JSON.stringify(body), httpOptions);
   }
+
+  onAdminRegister(name: string, username: string , email: string, password: string) {
+    const body = {
+        password: password,
+        username: username,
+        name: name,
+        email: email
+    };
+    const serverUrl = this.url;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+   return this.http.post<Response>(`${serverUrl}/user/registerAdmin`, JSON.stringify(body), httpOptions);
+  }
+
+  onUpdate(username: string, password: string, name: string) {
+    const body = {
+        password: password,
+        username: username,
+        name: name
+    };
+    const serverUrl = this.url;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+   return this.http.post<Response>(`${serverUrl}/profile/update`, JSON.stringify(body), httpOptions);
+  }
+
+  onLogout() {
+    const serverUrl = this.url;
+    return this.http.get<Response>(`${serverUrl}/logout`);
+  }
 }
+
+

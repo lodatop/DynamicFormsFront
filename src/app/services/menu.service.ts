@@ -17,10 +17,9 @@ export class MenuService {
     return this.http.get<Response>(`${serverUrl}/menu`);
   }
 
-  getMenu(menuid: string){
+  getMenusWithoutParents(){
     const serverUrl = this.url;
-    const id = menuid;
-    return this.http.get<Response>(`${serverUrl}/${id}`);
+    return this.http.get<Response>(`${serverUrl}/dashboard`);
   }
 
   deleteMenu(menuid: string){
@@ -29,10 +28,17 @@ export class MenuService {
     return this.http.get<Response>(`${serverUrl}/${id}/delete`);
   }
 
-  createMenu(title: string, description: string){
+  getMenusByParent(menuid: string){
+    const serverUrl = this.url;
+    const id = menuid;
+    return this.http.get<Response>(`${serverUrl}/${id}`);
+  }
+
+  createMenu(title: string, description: string, parent: string){
     const body = {
       title: title,
-      description: description
+      description: description,
+      parent: parent
     };
     const serverUrl = this.url;
     const httpOptions = {

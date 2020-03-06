@@ -12,27 +12,19 @@ export class OptionService {
   url = environment.url;
   constructor( private http: HttpClient, private loadingCtrl: LoadingController) { }
 
-  getOptions(menuid: string){
+  deleteForm(menuid: string, formid: string){
     const serverUrl = this.url;
     const menuId = menuid;
-    return this.http.get<Response>(`${serverUrl}/${menuId}/option`);
+    const formId = formid;
+    return this.http.get<Response>(`${serverUrl}/${menuId}/${formId}/delete`);
   }
 
-  deleteOption(menuid: string, optionid: string){
-    const serverUrl = this.url;
-    const menuId = menuid;
-    const optionId = optionid;
-    return this.http.get<Response>(`${serverUrl}/${menuId}/${optionId}/delete`);
-  }
-
-  createOption(menuid: string, title: string, description: string, type: String, parent: string){
+  createForm(menuid: string, title: string, description: string){
     const menuId = menuid;
     const body = {
       title: title,
       menu: menuId,
-      description: description,
-      type: type,
-      parent: parent
+      description: description
     };
     const serverUrl = this.url;
     const httpOptions = {
@@ -40,6 +32,6 @@ export class OptionService {
         'Content-Type':  'application/json'
       })
     };
-    return this.http.post<Response>(`${serverUrl}/${menuId}/option`, JSON.stringify(body), httpOptions);
+    return this.http.post<Response>(`${serverUrl}/${menuId}/form`, JSON.stringify(body), httpOptions);
   }
 }

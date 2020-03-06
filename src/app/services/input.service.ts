@@ -12,17 +12,20 @@ export class InputService {
   url = environment.url;
   constructor( private http: HttpClient, private loadingCtrl: LoadingController) { }
 
-  getInputs(menuid: string, optionid: string){
+  getAllInputs(){
     const serverUrl = this.url;
-    const menuId = menuid;
-    const optionId = optionid;
-    return this.http.get<Response>(`${serverUrl}/${menuId}/${optionId}/form`);
+    return this.http.get<Response>(`${serverUrl}/input`);
   }
 
-  createInput(menuid: string, optionid: string, label: string, type: string){
+  getInputsByForm(menuid: string, formid: string){
     const serverUrl = this.url;
     const menuId = menuid;
-    const optionId = optionid;
+    const formId = formid;
+    return this.http.get<Response>(`${serverUrl}/${menuId}/${formId}`);
+  }
+
+  createInput(label: string, type: string){
+    const serverUrl = this.url;
     const body = {
       type: type,
       label: label
@@ -32,6 +35,38 @@ export class InputService {
         'Content-Type':  'application/json'
       })
     };
-    return this.http.post<Response>(`${serverUrl}/${menuId}/${optionId}/form/input`, JSON.stringify(body), httpOptions);
+    return this.http.post<Response>(`${serverUrl}/input`, JSON.stringify(body), httpOptions);
+  }
+
+  addInputToForm(menuid: string, optionid: string, inputId: string){
+    const serverUrl = this.url;
+    const menuId = menuid;
+    const formId = optionid;
+    const body = {
+      input: inputId
+    };
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+    return this.http.post<Response>(`${serverUrl}/${menuId}/${formId}/input`, JSON.stringify(body), httpOptions);
+  
+  }
+
+  deleteInputFromForm(menuid: string, optionid: string, inputid: string){
+    const serverUrl = this.url;
+    const menuId = menuid;
+    const formId = optionid;
+    const body = {
+      input : inputid
+    }
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+    return this.http.post<Response>(`${serverUrl}/${menuId}/${formId}/input/delete`, JSON.stringify(body), httpOptions);
+  
   }
 }
