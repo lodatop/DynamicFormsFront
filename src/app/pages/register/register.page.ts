@@ -12,6 +12,8 @@ export class RegisterPage implements OnInit {
   email: string;
   username: string;
   password: string;
+  gender: string;
+  age: number;
 
   constructor(private auth: AuthService) { }
 
@@ -19,7 +21,7 @@ export class RegisterPage implements OnInit {
   }
 
   register() {
-    this.auth.onRegister(this.name, this.username, this.email, this.password).subscribe((data) => {
+    this.auth.onRegister(this.name, this.username, this.email, this.password, this.age, this.gender).subscribe((data) => {
       console.log(data);
     })
   }

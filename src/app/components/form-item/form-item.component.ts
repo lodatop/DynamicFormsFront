@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { OptionService } from '../../services/option.service';
+import { MenuService } from '../../services/menu.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-item',
@@ -7,8 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormItemComponent implements OnInit {
 
-  constructor() { }
+  @Input() menuId: string;
+  submenuList: any;
+  formList: any;
+  constructor(private form: OptionService, private menu: MenuService, 
+    private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getData();
+  }
 
+  ionViewWillEnter(){
+    this.getData();
+  }
+
+  getData(){ this.menu.getMenusByParent(this.menuId).subscribe((results) => {
+      this.submenuList = results.data.menus;
+      this.formList = results.data.forms;
+      console.log(this.submenuList)
+    })
+  }
+
+  addMenu(){}
 }

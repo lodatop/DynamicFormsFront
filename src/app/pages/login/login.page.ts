@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastController, NavController } from '@ionic/angular';
+import { ToastController, LoadingController } from '@ionic/angular';
 import { AuthService } from '../../services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,15 +13,23 @@ export class LoginPage implements OnInit {
   username: string;
   password: string;
 
-  constructor(private router: NavController, private toast: ToastController,
-              private auth: AuthService) { }
+  constructor(private router: Router, private toast: ToastController,
+              private auth: AuthService, private loadingCtrl: LoadingController) { }
 
   ngOnInit() {
   }
   
   login() {
-    this.auth.onLogin(this.username, this.password).subscribe((data) => {
-      console.log(data);
-    })
+    this.loadingCtrl
+        .create({ keyboardClose: true, message: 'Logging in...' })
+        .then(loadingEl => {
+          loadingEl.present();
+          this.auth.onLogin(this.username, this.password).subscribe((data) => {
+            loadingEl.dismiss();
+            if (data.status === 200) {
+              this.router.navigateByUrl('/views/menu');
+          }
+          });
+        })
   }
 }

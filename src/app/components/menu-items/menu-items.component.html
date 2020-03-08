@@ -1,6 +1,6 @@
 <ion-list *ngIf='list?.length'>
   <ion-item *ngFor='let menu of list'>
-    <ion-text (click)='get(menu)'>
+    <ion-text (click)='getMenu(menu.id_menu)'>
       <h2>{{menu.title_menu}}</h2>
       <p>{{menu.description_menu}}</p>
     </ion-text>

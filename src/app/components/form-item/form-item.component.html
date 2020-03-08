@@ -1,0 +1,19 @@
+<ion-list *ngIf='formList?.length'>
+    <ion-item *ngFor='let form of formList'>
+      <ion-text>
+        <h2>{{form.title_form}}</h2>
+        <p>{{form.description_form}}</p>
+      </ion-text>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf='submenuList?.length'>
+    <ion-item *ngFor='let menu of submenuList'>
+      <ion-text>
+        <h2>{{menu.title_menu}}</h2>
+        <p>{{menu.description_menu}}</p>
+      </ion-text>
+    </ion-item>
+  </ion-list>
+  
+  

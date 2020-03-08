@@ -19,6 +19,13 @@
       <ion-input [(ngModel)]="username" placeholder="Enter username..."></ion-input>
       <ion-label>Email:</ion-label>
       <ion-input [(ngModel)]="email" type="email" laceholder="Enter email..."></ion-input>
+      <ion-label>Gender:</ion-label>
+      <ion-select [(ngModel)]="Gender" laceholder="Select one...">
+        <ion-select-option value="female">Female</ion-select-option>
+        <ion-select-option value="Male">Male</ion-select-option>
+      </ion-select>
+      <ion-label>Age:</ion-label>
+      <ion-input [(ngModel)]="age" type="numeric" laceholder="Enter your age..."></ion-input>
       <ion-label>Password:</ion-label>
       <ion-input [(ngModel)]="password" type="password" placeholder="Enter password..."></ion-input>
       <ion-button [routerLink]="['/login']" color="primary" size="large">Go back</ion-button>
