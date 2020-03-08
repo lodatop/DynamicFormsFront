@@ -4,7 +4,7 @@
     <h1>List of Forms</h1>
   </ion-text>  
   <ion-item *ngFor='let form of formList'>
-      <ion-text>
+      <ion-text (click)='getForm(form.id_form)'>
         <h2>{{form.title_form}}</h2>
         <p>{{form.description_form}}</p>
       </ion-text>
@@ -16,7 +16,7 @@
       <h1>List of Submenus</h1>
     </ion-text>  
     <ion-item *ngFor='let menu of submenuList'>
-      <ion-text>
+      <ion-text (click)='getMenu(menu.id_menu)'>
         <h2>{{menu.title_menu}}</h2>
         <p>{{menu.description_menu}}</p>
       </ion-text>

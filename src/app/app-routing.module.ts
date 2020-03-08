@@ -26,7 +26,12 @@ const routes: Routes = [
   {
     path: 'views/submenu/:menuId',
     loadChildren: () => import('./pages/submenu/submenu.module').then( m => m.SubmenuPageModule)
+  },
+  {
+    path: 'views/form/:formId',
+    loadChildren: () => import('./pages/form/form.module').then( m => m.FormPageModule)
   }
+
 
 
 

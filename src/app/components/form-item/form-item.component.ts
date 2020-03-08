@@ -30,5 +30,13 @@ export class FormItemComponent implements OnInit {
     })
   }
 
+  getForm(formId: string){
+    this.router.navigateByUrl(`/views/form/${formId}`)
+  }
+
+  getMenu(menuId: string){
+    this.router.navigateByUrl(`/views/submenu/${menuId}`)
+  }
+
   addMenu(){}
 }
