@@ -12,11 +12,10 @@ export class OptionService {
   url = environment.url;
   constructor( private http: HttpClient, private loadingCtrl: LoadingController) { }
 
-  deleteForm(menuid: string, formid: string){
+  deleteForm(formid: string){
     const serverUrl = this.url;
-    const menuId = menuid;
     const formId = formid;
-    return this.http.get<Response>(`${serverUrl}/${menuId}/${formId}/delete`);
+    return this.http.get<Response>(`${serverUrl}/form/${formId}/delete`);
   }
 
   createForm(menuid: string, title: string, description: string){
@@ -32,6 +31,6 @@ export class OptionService {
         'Content-Type':  'application/json'
       })
     };
-    return this.http.post<Response>(`${serverUrl}/${menuId}/form`, JSON.stringify(body), httpOptions);
+    return this.http.post<Response>(`${serverUrl}/menu/${menuId}/form`, JSON.stringify(body), httpOptions);
   }
 }

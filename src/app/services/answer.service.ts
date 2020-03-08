@@ -12,15 +12,13 @@ export class AnswerService {
   url = environment.url;
   constructor( private http: HttpClient, private loadingCtrl: LoadingController) { }
 
-  getAnswer(menuid: string, formid: string) {
+  getAnswer(formid: string) {
     const serverUrl = this.url;
-    const menuId = menuid;
     const formId = formid;
-    return this.http.get<Response>(`${serverUrl}/${menuId}/${formId}/answer`);
+    return this.http.get<Response>(`${serverUrl}/form/${formId}/answer`);
   }
 
-  createAnswer(menuid: string, formid: string, data: object) {
-    const menuId = menuid;
+  createAnswer(formid: string, data: object) {
     const formId = formid;
     const body = {
         data: data
@@ -31,11 +29,10 @@ export class AnswerService {
         'Content-Type':  'application/json'
       })
     };
-    return this.http.post<Response>(`${serverUrl}/${menuId}/${formId}/answer`, JSON.stringify(body), httpOptions);
+    return this.http.post<Response>(`${serverUrl}/form/${formId}/answer`, JSON.stringify(body), httpOptions);
   }
 
-  deleteAnswer(menuid: string, formid: string) {
-    const menuId = menuid;
+  deleteAnswer(formid: string) {
     const formId = formid;
     const serverUrl = this.url;
     const httpOptions = {
@@ -43,6 +40,6 @@ export class AnswerService {
         'Content-Type':  'application/json'
       })
     };
-    return this.http.post<Response>(`${serverUrl}/${menuId}/${formId}/answer/delete`, httpOptions);
+    return this.http.post<Response>(`${serverUrl}/form/${formId}/answer/delete`, httpOptions);
   }
 }

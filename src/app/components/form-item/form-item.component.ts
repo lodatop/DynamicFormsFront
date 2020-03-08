@@ -27,7 +27,6 @@ export class FormItemComponent implements OnInit {
   getData(){ this.menu.getMenusByParent(this.menuId).subscribe((results) => {
       this.submenuList = results.data.menus;
       this.formList = results.data.forms;
-      console.log(this.submenuList)
     })
   }
 

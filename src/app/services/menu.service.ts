@@ -14,7 +14,7 @@ export class MenuService {
 
   getMenus(){
     const serverUrl = this.url;
-    return this.http.get<Response>(`${serverUrl}/menu`);
+    return this.http.get<Response>(`${serverUrl}/menu/menu`);
   }
 
   getMenusWithoutParents(){
@@ -25,13 +25,13 @@ export class MenuService {
   deleteMenu(menuid: string){
     const serverUrl = this.url;
     const id = menuid;
-    return this.http.get<Response>(`${serverUrl}/${id}/delete`);
+    return this.http.get<Response>(`${serverUrl}/menu/${id}/delete`);
   }
 
   getMenusByParent(menuid: string){
     const serverUrl = this.url;
     const id = menuid;
-    return this.http.get<Response>(`${serverUrl}/${id}`);
+    return this.http.get<Response>(`${serverUrl}/menu/${id}`);
   }
 
   createMenu(title: string, description: string, parent: string){
@@ -46,6 +46,6 @@ export class MenuService {
         'Content-Type':  'application/json'
       })
     };
-    return this.http.post<Response>(`${serverUrl}/menu`, JSON.stringify(body), httpOptions);
+    return this.http.post<Response>(`${serverUrl}/menu/menu`, JSON.stringify(body), httpOptions);
   }
 }

@@ -17,11 +17,10 @@ export class InputService {
     return this.http.get<Response>(`${serverUrl}/input`);
   }
 
-  getInputsByForm(menuid: string, formid: string){
+  getInputsByForm(formid: string){
     const serverUrl = this.url;
-    const menuId = menuid;
     const formId = formid;
-    return this.http.get<Response>(`${serverUrl}/${menuId}/${formId}`);
+    return this.http.get<Response>(`${serverUrl}/form/${formId}`);
   }
 
   createInput(label: string, type: string){
@@ -38,9 +37,8 @@ export class InputService {
     return this.http.post<Response>(`${serverUrl}/input`, JSON.stringify(body), httpOptions);
   }
 
-  addInputToForm(menuid: string, optionid: string, inputId: string){
+  addInputToForm(optionid: string, inputId: string){
     const serverUrl = this.url;
-    const menuId = menuid;
     const formId = optionid;
     const body = {
       input: inputId
@@ -50,13 +48,12 @@ export class InputService {
         'Content-Type':  'application/json'
       })
     };
-    return this.http.post<Response>(`${serverUrl}/${menuId}/${formId}/input`, JSON.stringify(body), httpOptions);
+    return this.http.post<Response>(`${serverUrl}/form/${formId}/input`, JSON.stringify(body), httpOptions);
   
   }
 
-  deleteInputFromForm(menuid: string, optionid: string, inputid: string){
+  deleteInputFromForm(optionid: string, inputid: string){
     const serverUrl = this.url;
-    const menuId = menuid;
     const formId = optionid;
     const body = {
       input : inputid
@@ -66,7 +63,7 @@ export class InputService {
         'Content-Type':  'application/json'
       })
     };
-    return this.http.post<Response>(`${serverUrl}/${menuId}/${formId}/input/delete`, JSON.stringify(body), httpOptions);
+    return this.http.post<Response>(`${serverUrl}/form/${formId}/input/delete`, JSON.stringify(body), httpOptions);
   
   }
 }
