@@ -23,13 +23,14 @@ export class DynamicFormComponent implements OnInit {
     this.input.getInputsByForm(this.formId).subscribe((results) => {
       this.inputList = results;
       for(let i=0; i< this.inputList.length; i++){
-        this.answerArray[i].inputId = this.inputList[i].id_input;
+        this.answerArray.push({id:this.inputList[i].id_input, answer: ''}) ;
       }  
     })
   }
 
   onSubmit(){
-    this.answer.createAnswer(this.formId, JSON.parse(this.answerArray)).subscribe((res) => {
+    console.log('pipi')
+    this.answer.createAnswer(this.formId, JSON.stringify(this.answerArray)).subscribe((res) => {
       alert('pipi')
     })
   }

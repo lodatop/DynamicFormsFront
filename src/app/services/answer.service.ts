@@ -18,7 +18,7 @@ export class AnswerService {
     return this.http.get<Response>(`${serverUrl}/form/${formId}/answer`);
   }
 
-  createAnswer(formid: string, data: object) {
+  createAnswer(formid: string, data: string) {
     const formId = formid;
     const body = {
         data: data

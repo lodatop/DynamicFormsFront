@@ -10,6 +10,7 @@
         <ion-input *ngSwitchCase="'password'" type="password" [(ngModel)]="answerArray[i].answer"  required></ion-input>
         <ion-input *ngSwitchCase="'number'" type="number" [(ngModel)]="answerArray[i].answer"  required></ion-input>
         <ion-input *ngSwitchCase="'email'" type="email" [(ngModel)]="answerArray[i].answer"  required></ion-input>
+        <ion-input *ngSwitchCase="'date'" type="date" [(ngModel)]="answerArray[i].answer"  required></ion-input>
         <ion-input *ngSwitchDefault [(ngModel)]="answerArray[i].answer"  required></ion-input>
       </div>
     </ion-item>
