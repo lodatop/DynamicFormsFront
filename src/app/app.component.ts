@@ -19,7 +19,7 @@ export class AppComponent {
     private auth: AuthService
   ) {
       if(this.auth.userData){
-        this.nav.navigateRoot(['/views'])
+        this.nav.navigateRoot(['/views/menu'])
       }else{
         this.nav.navigateRoot(['/login'])
       }
