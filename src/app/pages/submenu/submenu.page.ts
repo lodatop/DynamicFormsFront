@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./submenu.page.scss'],
 })
 export class SubmenuPage implements OnInit {
-
+  
   public menuId: string;
   constructor( private route: ActivatedRoute ) { }
 

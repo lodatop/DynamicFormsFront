@@ -22,5 +22,11 @@
       </ion-text>
     </ion-item>
   </ion-list>
+
+  <ion-list *ngIf='!submenuList?.length && !formList?.length'>
+    <ion-item>
+      This Menu is empty
+    </ion-item>
+  </ion-list>
   
   
