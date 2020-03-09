@@ -19,7 +19,7 @@ export class MenuService {
 
   getMenusWithoutParents(){
     const serverUrl = this.url;
-    return this.http.get<Response>(`${serverUrl}/dashboard`);
+    return this.http.get<Response>(`${serverUrl}/dashboard`, {withCredentials: true});
   }
 
   deleteMenu(menuid: string){

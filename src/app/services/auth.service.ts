@@ -26,7 +26,8 @@ export class AuthService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
-      })
+      }),
+      withCredentials: true
     };
     return this.http.post<Response>(`${serverUrl}/user/login`, JSON.stringify(body), httpOptions).pipe(tap(data => {
       if(data.status === 200){
@@ -48,7 +49,8 @@ export class AuthService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
-      })
+      }),
+      withCredentials: true
     };
    return this.http.post<Response>(`${serverUrl}/user/register`, JSON.stringify(body), httpOptions);
   }
@@ -66,7 +68,8 @@ export class AuthService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
-      })
+      }),
+      withCredentials: true
     };
    return this.http.post<Response>(`${serverUrl}/user/registerAdmin`, JSON.stringify(body), httpOptions);
   }
@@ -83,14 +86,15 @@ export class AuthService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
-      })
+      }),
+      withCredentials: true
     };
    return this.http.post<Response>(`${serverUrl}/profile/update`, JSON.stringify(body), httpOptions);
   }
 
   onLogout() {
     const serverUrl = this.url;
-    return this.http.get<Response>(`${serverUrl}/logout`).pipe(
+    return this.http.get<Response>(`${serverUrl}/logout`, {withCredentials: true}).pipe(
       tap(data => {
         Plugins.Storage.remove({ key: 'user' });
       })

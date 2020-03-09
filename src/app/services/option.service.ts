@@ -15,7 +15,7 @@ export class OptionService {
   deleteForm(formid: string){
     const serverUrl = this.url;
     const formId = formid;
-    return this.http.get<Response>(`${serverUrl}/form/${formId}/delete`);
+    return this.http.get<Response>(`${serverUrl}/form/${formId}/delete`, {withCredentials: true});
   }
 
   createForm(menuid: string, title: string, description: string){
@@ -29,7 +29,8 @@ export class OptionService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
-      })
+      }),
+      withCredentials: true
     };
     return this.http.post<Response>(`${serverUrl}/menu/${menuId}/form`, JSON.stringify(body), httpOptions);
   }
