@@ -6,7 +6,6 @@ import { Response } from '../models/Response.model';
 import {map, tap} from 'rxjs/operators';
 
 
-import {BehaviorSubject, from} from 'rxjs';
 import { Plugins } from '@capacitor/core';
 
 
@@ -16,36 +15,7 @@ import { Plugins } from '@capacitor/core';
 export class AuthService {
   url = environment.url;
 
-  private userObservable = new BehaviorSubject<any>(null);
   constructor( private http: HttpClient, private loadingCtrl: LoadingController) { }
-
-  get user() {
-    return this.userObservable.asObservable();
-  }
-
-  get userIsAuthenticated() {
-    return this.userObservable.asObservable().pipe(
-        map(user => {
-          if (user) {
-            return user;
-          } else {
-            return false;
-          }
-        })
-    );
-  }
-
-  get userIsAdmin() {
-    return this.userObservable.asObservable().pipe(
-        map(user => {
-          if (user.admin_user) {
-            return user;
-          } else {
-            return false;
-          }
-        })
-    );
-  }
 
   onLogin(username: string , password: string) {
     const body = {
@@ -60,7 +30,6 @@ export class AuthService {
     };
     return this.http.post<Response>(`${serverUrl}/user/login`, JSON.stringify(body), httpOptions).pipe(tap(data => {
       if(data.status === 200){
-      this.userObservable.next(data.data)
       this.saveUser(data.data)
       }
     }));
@@ -123,7 +92,6 @@ export class AuthService {
     const serverUrl = this.url;
     return this.http.get<Response>(`${serverUrl}/logout`).pipe(
       tap(data => {
-        this.userObservable.next(null)
         Plugins.Storage.remove({ key: 'user' });
       })
     );

@@ -21,7 +21,7 @@ export class AnswerService {
   createAnswer(formid: string, data: string) {
     const formId = formid;
     const body = {
-        data: data
+        data: JSON.parse(data)
     };
     const serverUrl = this.url;
     const httpOptions = {
@@ -29,6 +29,8 @@ export class AnswerService {
         'Content-Type':  'application/json'
       })
     };
+    console.log(body)
+    console.log(JSON.stringify(body))
     return this.http.post<Response>(`${serverUrl}/form/${formId}/answer`, JSON.stringify(body), httpOptions);
   }
 
@@ -40,6 +42,6 @@ export class AnswerService {
         'Content-Type':  'application/json'
       })
     };
-    return this.http.post<Response>(`${serverUrl}/form/${formId}/answer/delete`, httpOptions);
+    return this.http.get<Response>(`${serverUrl}/form/${formId}/answer/delete`, httpOptions);
   }
 }
