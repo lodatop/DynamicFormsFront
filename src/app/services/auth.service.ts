@@ -5,9 +5,7 @@ import { LoadingController } from '@ionic/angular';
 import { Response } from '../models/Response.model';
 import {map, tap} from 'rxjs/operators';
 
-
 import { Plugins } from '@capacitor/core';
-
 
 @Injectable({
   providedIn: 'root'
@@ -97,7 +95,6 @@ export class AuthService {
         this.userData = "";
       })
     );
-    
   }
 
   async saveUser(user: any){
@@ -107,5 +104,3 @@ export class AuthService {
     this.userData = JSON.parse(value);
   }
 }
-
-
