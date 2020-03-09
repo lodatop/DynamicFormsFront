@@ -32,7 +32,7 @@ export class DynamicFormComponent implements OnInit {
     console.log(this.answerArray)
     this.answer.createAnswer(this.formId, JSON.stringify(this.answerArray)).subscribe((results) => {
       alert(results)
-      this.router.navigateByUrl('views/menu')
+      this.router.navigateByUrl('views')
     })
   }
 

@@ -41,7 +41,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/views/menu',
+    redirectTo: 'menu',
     pathMatch: 'full'
   }
 ];

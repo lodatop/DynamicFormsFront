@@ -27,8 +27,7 @@ export class LoginPage implements OnInit {
           this.auth.onLogin(this.username, this.password).subscribe((data) => {
             loadingEl.dismiss();
             if (data.status === 200) {
-              console.log(data.data)
-              this.router.navigateByUrl('/views/menu');
+              this.router.navigateByUrl('/views');
           }
           });
         })

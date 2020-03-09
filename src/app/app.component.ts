@@ -18,8 +18,8 @@ export class AppComponent {
     private statusBar: StatusBar,
     private auth: AuthService
   ) {
-      if(auth.userData){
-        this.nav.navigateRoot(['/views/menu'])
+      if(this.auth.userData){
+        this.nav.navigateRoot(['/views'])
       }else{
         this.nav.navigateRoot(['/login'])
       }
