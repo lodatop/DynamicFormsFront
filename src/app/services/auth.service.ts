@@ -15,6 +15,7 @@ import { Plugins } from '@capacitor/core';
 export class AuthService {
   url = environment.url;
 
+  userData: any;
   constructor( private http: HttpClient, private loadingCtrl: LoadingController) { }
 
   onLogin(username: string , password: string) {
@@ -97,14 +98,17 @@ export class AuthService {
     return this.http.get<Response>(`${serverUrl}/logout`, {withCredentials: true}).pipe(
       tap(data => {
         Plugins.Storage.remove({ key: 'user' });
+        this.userData = "";
       })
     );
     
   }
 
-  saveUser(user: any){
+  async saveUser(user: any){
     const userJSON = JSON.stringify(user);
     Plugins.Storage.set({ key: 'user', value: userJSON });
+    const { value } = await Plugins.Storage.get({key:'user'});
+    this.userData = JSON.parse(value);
   }
 }
 

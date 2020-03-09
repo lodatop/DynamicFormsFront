@@ -4,7 +4,7 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: 'views',
+    path: '',
     component: TabsPage,
     children: [
       {
@@ -17,16 +17,16 @@ const routes: Routes = [
           }
         ]
       },
-      {
-        path: 'add',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../pages/add/add.module').then(m => m.AddPageModule)
-          }
-        ]
-      },
+      // {
+      //   path: 'add',
+      //   children: [
+      //     {
+      //       path: '',
+      //       loadChildren: () =>
+      //         import('../pages/add/add.module').then(m => m.AddPageModule)
+      //     }
+      //   ]
+      // },
       {
         path: 'tab3',
         children: [
