@@ -1,0 +1,18 @@
+
+<ion-list *ngIf='inputList?.length'>
+  <ion-text>
+    <h1>{{inputList[0].title_form}}</h1>
+  </ion-text>  
+  <ion-item *ngFor='let input of inputList; let i = index'>
+      <ion-label>{{input.label_input}}</ion-label>
+      <div [ngSwitch]="input.type_input">
+        <ion-input *ngSwitchCase="'text'" type="text" [(ngModel)]="answerArray[i].answer"  required></ion-input>
+        <ion-input *ngSwitchCase="'password'" type="password" [(ngModel)]="answerArray[i].answer"  required></ion-input>
+        <ion-input *ngSwitchCase="'number'" type="number" [(ngModel)]="answerArray[i].answer"  required></ion-input>
+        <ion-input *ngSwitchCase="'email'" type="email" [(ngModel)]="answerArray[i].answer"  required></ion-input>
+        <ion-input *ngSwitchCase="'date'" type="date" [(ngModel)]="answerArray[i].answer"  required></ion-input>
+        <ion-input *ngSwitchDefault [(ngModel)]="answerArray[i].answer"  required></ion-input>
+      </div>
+    </ion-item>
+    <ion-button (click)="onSubmit()" color="primary" size="large">Submit</ion-button>
+  </ion-list>
