@@ -14,13 +14,13 @@ export class InputService {
 
   getAllInputs(){
     const serverUrl = this.url;
-    return this.http.get<Response>(`${serverUrl}/input`);
+    return this.http.get<Response>(`${serverUrl}/input`, {withCredentials: true});
   }
 
   getInputsByForm(formid: string){
     const serverUrl = this.url;
     const id = formid;
-    return this.http.get<Response>(`${serverUrl}/form/${id}`);
+    return this.http.get<Response>(`${serverUrl}/form/${id}`, {withCredentials: true});
   }
 
   createInput(label: string, type: string){
@@ -32,7 +32,8 @@ export class InputService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
-      })
+      }),
+      withCredentials: true
     };
     return this.http.post<Response>(`${serverUrl}/input`, JSON.stringify(body), httpOptions);
   }
@@ -46,7 +47,8 @@ export class InputService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
-      })
+      }),
+      withCredentials: true
     };
     return this.http.post<Response>(`${serverUrl}/form/${formId}/input`, JSON.stringify(body), httpOptions);
   
@@ -61,7 +63,8 @@ export class InputService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
-      })
+      }),
+      withCredentials: true
     };
     return this.http.post<Response>(`${serverUrl}/form/${formId}/input/delete`, JSON.stringify(body), httpOptions);
   

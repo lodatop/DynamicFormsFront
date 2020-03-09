@@ -15,7 +15,7 @@ export class AnswerService {
   getAnswer(formid: string) {
     const serverUrl = this.url;
     const formId = formid;
-    return this.http.get<Response>(`${serverUrl}/form/${formId}/answer`);
+    return this.http.get<Response>(`${serverUrl}/form/${formId}/answer`,{withCredentials: true});
   }
 
   createAnswer(formid: string, data: string) {
@@ -27,7 +27,8 @@ export class AnswerService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
-      })
+      }),
+      withCredentials: true
     };
     console.log(body)
     console.log(JSON.stringify(body))
@@ -40,7 +41,8 @@ export class AnswerService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
-      })
+      }),
+      withCredentials: true
     };
     return this.http.get<Response>(`${serverUrl}/form/${formId}/answer/delete`, httpOptions);
   }

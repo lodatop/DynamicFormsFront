@@ -31,8 +31,8 @@ export class DynamicFormComponent implements OnInit {
   onSubmit(){
     console.log(this.answerArray)
     this.answer.createAnswer(this.formId, JSON.stringify(this.answerArray)).subscribe((results) => {
-      console.log(results)
-      alert('pipi')
+      alert(results)
+      this.router.navigateByUrl('views/menu')
     })
   }
 
