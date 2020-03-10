@@ -17,16 +17,6 @@ const routes: Routes = [
           }
         ]
       },
-      // {
-      //   path: 'add',
-      //   children: [
-      //     {
-      //       path: '',
-      //       loadChildren: () =>
-      //         import('../pages/add/add.module').then(m => m.AddPageModule)
-      //     }
-      //   ]
-      // },
       {
         path: 'tab3',
         children: [
@@ -34,6 +24,16 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../pages/tab3/tab3.module').then(m => m.Tab3PageModule)
+          }
+        ]
+      },
+      {
+        path: 'stats',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../pages/stats/stats.module').then( m => m.StatsPageModule)
           }
         ]
       }

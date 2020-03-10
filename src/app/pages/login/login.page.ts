@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastController, LoadingController } from '@ionic/angular';
+import { ToastController, LoadingController, NavController } from '@ionic/angular';
 import { AuthService } from '../../services/auth.service';
 import {Router} from '@angular/router';
 
@@ -14,12 +14,12 @@ export class LoginPage implements OnInit {
   password: string;
 
   constructor(private router: Router, private toast: ToastController,
-              private auth: AuthService, private loadingCtrl: LoadingController) { }
+              private auth: AuthService, private loadingCtrl: LoadingController, private nav: NavController) { }
 
   ngOnInit() {
   }
   
-  login() {
+  async login() {
     this.loadingCtrl
         .create({ keyboardClose: true, message: 'Logging in...' })
         .then(loadingEl => {
@@ -27,9 +27,16 @@ export class LoginPage implements OnInit {
           this.auth.onLogin(this.username, this.password).subscribe((data) => {
             loadingEl.dismiss();
             if (data.status === 200) {
-              this.router.navigateByUrl('/views/menu');
+              this.nav.navigateRoot(['/views/menu'])
           }
           });
         })
+    // await this.auth.login();
+    // this.auth.userIsLoged().then(data => {
+    //   if(data){
+    //     this.nav.navigateRoot(['/views/menu'])
+    //   }
+    // });
   }
+
 }
