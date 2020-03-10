@@ -8,12 +8,14 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./add-item.component.scss'],
 })
 export class AddItemComponent implements OnInit {
-  @Input() option: number = 0;
-
+  
+  option: number;
   constructor(private router: NavController) {
+    this.option=0;
   }
 
   ngOnInit() {
+
   }
   
   addMenu() {

@@ -13,6 +13,7 @@ export class FormItemComponent implements OnInit {
   @Input() menuId: string;
   submenuList: any;
   formList: any;
+  menuData: any;
   constructor(private form: OptionService, private menu: MenuService, 
     private router: Router) { }
 
@@ -25,8 +26,9 @@ export class FormItemComponent implements OnInit {
   }
 
   getData(){ this.menu.getMenusByParent(this.menuId).subscribe((results) => {
-      this.submenuList = results.data.menus;
+      this.submenuList = results.data.submenus;
       this.formList = results.data.forms;
+      this.menuData = results.data.menu;
     })
   }
 

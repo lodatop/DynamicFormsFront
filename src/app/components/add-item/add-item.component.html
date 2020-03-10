@@ -5,7 +5,7 @@
         </ion-toolbar>
       </ion-header>
     <ion-button (click)="addMenu()">menu</ion-button>
-    <ion-button (click)="addForm()">form</ion-button>
+    <ion-button *ngIf='menuId' (click)="addForm()">form</ion-button>
 </div>
 <div *ngIf="option == 1">
     <ion-header>
@@ -21,5 +21,5 @@
         <ion-title>Add Form</ion-title>
       </ion-toolbar>
     </ion-header>
-    <app-add-form></app-add-form>
+    <app-add-form [menuId]='menuId'></app-add-form>
 </div>

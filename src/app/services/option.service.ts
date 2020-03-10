@@ -34,4 +34,9 @@ export class OptionService {
     };
     return this.http.post<Response>(`${serverUrl}/menu/${menuId}/form`, JSON.stringify(body), httpOptions);
   }
+
+  getForms(){
+    const serverUrl = this.url;
+    return this.http.get<Response>(`${serverUrl}/form/`, {withCredentials: true});
+  }
 }

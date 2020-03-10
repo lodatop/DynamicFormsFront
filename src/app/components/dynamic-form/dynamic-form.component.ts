@@ -14,7 +14,7 @@ export class DynamicFormComponent implements OnInit {
   public inputList: any;
   @Input() formId: string;
   constructor(private form: OptionService,
-    private router: Router, private input: InputService, private answer: AnswerService,) { }
+    private router: Router, private input: InputService, private answer: AnswerService) { }
 
   ngOnInit() {
     this.renderForm()
@@ -32,7 +32,7 @@ export class DynamicFormComponent implements OnInit {
     console.log(this.answerArray)
     this.answer.createAnswer(this.formId, JSON.stringify(this.answerArray)).subscribe((results) => {
       alert(results)
-      this.router.navigateByUrl('views')
+      this.router.navigateByUrl('views/menu')
     })
   }
 

@@ -9,10 +9,10 @@ import { ActivatedRoute } from '@angular/router';
 export class SubmenuPage implements OnInit {
   
   public menuId: string;
-  constructor( private route: ActivatedRoute ) { }
+  constructor( private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.menuId = this.route.snapshot.paramMap.get('menuId')
+    this.menuId = this.route.snapshot.paramMap.get('menuId');
   }
 
 }
