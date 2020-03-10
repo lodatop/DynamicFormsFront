@@ -3,9 +3,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { LoadingController } from '@ionic/angular';
 import { Response } from '../models/Response.model';
-import {map, tap} from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 import { Plugins } from '@capacitor/core';
+const { Storage } = Plugins;
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,29 @@ export class AuthService {
 
   userData: any;
   constructor( private http: HttpClient, private loadingCtrl: LoadingController) { }
+
+  async userIsLoged(){
+    const ret = await Storage.get({key:'user'});
+    const user = JSON.parse(ret.value);
+    this.userData = user;
+    return user;
+  }
+
+  getUserData(){
+    return this.userData;
+  }
+
+  async userIsAdmin(){
+    return this.userData.admin_user;
+  }
+
+  async logout(){
+    await Storage.clear();
+  }
+
+  // login(){
+  //   this.saveUser({name: "Wisam", username: "wisim"})
+  // }
 
   onLogin(username: string , password: string) {
     const body = {
@@ -30,7 +54,7 @@ export class AuthService {
     };
     return this.http.post<Response>(`${serverUrl}/user/login`, JSON.stringify(body), httpOptions).pipe(tap(data => {
       if(data.status === 200){
-      this.saveUser(data.data)
+        this.saveUser(data.data)
       }
     }));
   }
@@ -95,7 +119,8 @@ export class AuthService {
     const serverUrl = this.url;
     return this.http.get<Response>(`${serverUrl}/logout`, {withCredentials: true}).pipe(
       tap(data => {
-        Plugins.Storage.remove({ key: 'user' });
+        // Storage.clear();
+        Storage.remove({ key: 'user' });
         this.userData = "";
       })
     );
@@ -103,8 +128,8 @@ export class AuthService {
 
   async saveUser(user: any){
     const userJSON = JSON.stringify(user);
-    Plugins.Storage.set({ key: 'user', value: userJSON });
-    const { value } = await Plugins.Storage.get({key:'user'});
-    this.userData = JSON.parse(value);
+    await Storage.set({ key: 'user', value: userJSON });
+    // const { value } = await Storage.get({key:'user'});
+    // this.userData = JSON.parse(value);
   }
 }

@@ -18,11 +18,16 @@ export class AppComponent {
     private statusBar: StatusBar,
     private auth: AuthService
   ) {
-      if(this.auth.userData){
+    // this.auth.logout()
+    this.auth.userIsLoged().then(data => {
+      if(data){
         this.nav.navigateRoot(['/views/menu'])
       }else{
+        console.log(data)
         this.nav.navigateRoot(['/login'])
       }
+    });
+      
     this.initializeApp();
   }
 
