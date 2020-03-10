@@ -9,7 +9,7 @@ import { Chart } from 'chart.js';
 })
 export class StatsPage implements OnInit {
 
-  chart = [];
+  chart: any = [];
 
   constructor( private stats: ChartService ) { }
 
