@@ -11,7 +11,7 @@ export class StatsPage implements OnInit {
 
   chart: any = {};
   @ViewChild("canvas", {static: false}) canvas: ElementRef;
-  mostVisited = {label: '', value: 0};
+  mostVisited = {title_form: '', completed_form: 0};
 
   constructor( private stats: ChartService ) { }
   
@@ -25,22 +25,23 @@ export class StatsPage implements OnInit {
   ngOnInit() {
     this.stats.getFormStadistics()
       .subscribe(res => {
+        // let arr = res['list'].map(res => res);
         let arr = [
-          {label: "form1", value: 50}, 
-          {label: "form2", value: 45}, 
-          {label: "form3", value: 10}, 
-          {label: "form5", value: 61}, 
-          {label: "form4", value: 25}
+          {title_form: "form1", completed_form: 50}, 
+          {title_form: "form2", completed_form: 45}, 
+          {title_form: "form3", completed_form: 10}, 
+          {title_form: "form5", completed_form: 61}, 
+          {title_form: "form4", completed_form: 25}
         ];
-        let labels= [];
-        let views = [];
+        let title_forms = [];
+        let completed = [];
         let backgroundColor = [];
         arr.map(el => {
-          if(this.mostVisited.value < el.value){
+          if(this.mostVisited.completed_form < el.completed_form){
             this.mostVisited = {...el}
           }
-          labels.push(el.label);
-          views.push(el.value);
+          title_forms.push(el.title_form);
+          completed.push(el.completed_form);
           backgroundColor.push(`rgb(${this.getRandomNumber()}, ${this.getRandomNumber()}, ${this.getRandomNumber()})`);
         });
         console.log(this.mostVisited)
@@ -48,12 +49,12 @@ export class StatsPage implements OnInit {
           type: 'pie',
           data: {
             datasets: [{
-              data: views,
+              data: completed,
               backgroundColor,
               borderColor: "#F6FFF8"
               
             }],
-            labels: labels
+            labels: title_forms
           },
           options: {
             legend:{

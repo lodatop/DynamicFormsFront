@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-    <ion-text *ngIf="mostVisited.value > 0">{{mostVisited.label}} is the most visited</ion-text>
+    <ion-text *ngIf="mostVisited.completed_form > 0">{{mostVisited.title_form}} is the most visited</ion-text>
     <div *ngIf="chart" style="margin-top: 40%;">
       <canvas id="canvas" width="300" #canvas></canvas>
     </div>
