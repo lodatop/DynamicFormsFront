@@ -14,6 +14,7 @@ export class FormItemComponent implements OnInit {
   submenuList: any;
   formList: any;
   menuData: any;
+  // menuData: {} = {title_menu: "menu prueba", description_menu: "este es el menu de prueba", id_menu: '1'}
   constructor(private form: OptionService, private menu: MenuService, 
     private router: Router) { }
 
@@ -25,7 +26,8 @@ export class FormItemComponent implements OnInit {
     this.getData();
   }
 
-  getData(){ this.menu.getMenusByParent(this.menuId).subscribe((results) => {
+  getData(){ 
+    this.menu.getMenusByParent(this.menuId).subscribe((results) => {
       this.submenuList = results.data.submenus;
       this.formList = results.data.forms;
       this.menuData = results.data.menu;

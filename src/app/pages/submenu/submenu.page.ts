@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { MenuService } from 'src/app/services/menu/menu.service';
 
 @Component({
   selector: 'app-submenu',
@@ -10,7 +11,9 @@ import { NavController } from '@ionic/angular';
 export class SubmenuPage implements OnInit {
   
   public menuId: string;
-  constructor( private route: ActivatedRoute, private nav: NavController) { }
+  menuData: {};
+  // menuData: {} = {title_menu: "menu prueba", description_menu: "este es el menu de prueba", id_menu: '1'}
+  constructor( private route: ActivatedRoute, private nav: NavController, private menu: MenuService) { }
 
   ngOnInit() {
     this.menuId = this.route.snapshot.paramMap.get('menuId');
@@ -19,4 +22,10 @@ export class SubmenuPage implements OnInit {
   goBack(){
     this.nav.back();
   }
+
+  getMenuData(){ 
+    this.menu.getMenusByParent(this.menuId).subscribe((results) => {
+    this.menuData = results.data.menu;
+  })
+}
 }
