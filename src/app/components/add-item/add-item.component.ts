@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { OptionService } from 'src/app/services/option/option.service';
 
 @Component({
   selector: 'app-add-item',
@@ -10,19 +11,11 @@ import { NavController } from '@ionic/angular';
 export class AddItemComponent implements OnInit {
   
   option: number;
-  constructor(private router: NavController) {
-    this.option=0;
+  constructor(private nav: NavController, private opt: OptionService) {
   }
 
   ngOnInit() {
-
+    this.option = this.opt.getOption();
   }
   
-  addMenu() {
-    this.option = 1;
-  };
-
-  addForm() {
-    this.option = 2;
-  };
 }

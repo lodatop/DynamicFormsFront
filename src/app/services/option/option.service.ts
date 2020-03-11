@@ -8,7 +8,7 @@ import { Response } from '../../models/Response.model';
   providedIn: 'root'
 })
 export class OptionService {
-
+  option: number = 0;
   url = environment.url;
   constructor( private http: HttpClient, private loadingCtrl: LoadingController) { }
 
@@ -38,5 +38,13 @@ export class OptionService {
   getForms(){
     const serverUrl = this.url;
     return this.http.get<Response>(`${serverUrl}/form/`, {withCredentials: true});
+  }
+
+  getOption(){
+    return this.option;
+  }
+
+  setOption(newOption){
+    this.option = newOption;
   }
 }
