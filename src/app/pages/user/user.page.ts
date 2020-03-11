@@ -20,7 +20,10 @@ export class UserPage implements OnInit {
   }
 
   logout(){
-    this.auth.logout().then(res => {
+    // this.auth.logout().then(res => {
+    //   this.nav.navigateRoot(['/login']);
+    // })
+    this.auth.onLogout().subscribe(res => {
       this.nav.navigateRoot(['/login']);
     })
   }

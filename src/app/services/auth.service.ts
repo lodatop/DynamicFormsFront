@@ -32,9 +32,9 @@ export class AuthService {
     return this.userData.admin_user;
   }
 
-  async logout(){
-    await Storage.clear();
-  }
+  // async logout(){
+  //   await Storage.clear();
+  // }
 
   // async login(){
   //   this.saveUser({name_user: "Wisam", username_user: "wisim", admin_user: true})
@@ -119,8 +119,8 @@ export class AuthService {
     const serverUrl = this.url;
     return this.http.get<Response>(`${serverUrl}/logout`, {withCredentials: true}).pipe(
       tap(data => {
-        // Storage.clear();
-        Storage.remove({ key: 'user' });
+        Storage.clear();
+        // Storage.remove({ key: 'user' });
         this.userData = "";
       })
     );
