@@ -14,11 +14,12 @@ import { OptionService } from './services/option.service';
 import { MenuService } from './services/menu.service';
 import { ChartService } from './services/chart.service'
 import { InputService } from './services/input.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
   providers: [
     AnswerService,
     InputService,
