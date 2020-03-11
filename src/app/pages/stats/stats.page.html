@@ -5,7 +5,8 @@
 </ion-header>
 
 <ion-content>
-    <div *ngIf="chart">
-      <canvas id="canvas"></canvas>
+    <ion-text *ngIf="mostVisited.value > 0">{{mostVisited.label}} is the most visited</ion-text>
+    <div *ngIf="chart" style="margin-top: 40%;">
+      <canvas id="canvas" width="300" #canvas></canvas>
     </div>
 </ion-content>

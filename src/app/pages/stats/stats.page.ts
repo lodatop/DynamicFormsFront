@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ChartService } from '../../services/chart.service';
 import { Chart } from 'chart.js';
 
@@ -9,57 +9,103 @@ import { Chart } from 'chart.js';
 })
 export class StatsPage implements OnInit {
 
-  chart: any = [];
+  chart: any = {};
+  @ViewChild("canvas", {static: false}) canvas: ElementRef;
+  mostVisited = {label: '', value: 0};
 
   constructor( private stats: ChartService ) { }
+  
+  ionViewWillEnter(){
+  }
+
+  getRandomNumber(){
+    return Math.floor(Math.random()*256);
+  }
 
   ngOnInit() {
     this.stats.getFormStadistics()
       .subscribe(res => {
-        let temp_max = res['list'].map(res => res.main.temp_max);
-        let temp_min = res['list'].map(res => res.main.temp_min);
-        let allDates  = res['list'].map(res => res.dt);
-
-        let dates =[]
-        allDates.forEach(res => {
-          let jsdate = new Date(res * 1000)
-          dates.push(jsdate.toLocaleTimeString('en', {year: 'numeric', month: 'short', day: 'numeric'}))
+        let arr = [
+          {label: "form1", value: 50}, 
+          {label: "form2", value: 45}, 
+          {label: "form3", value: 10}, 
+          {label: "form5", value: 61}, 
+          {label: "form4", value: 25}
+        ];
+        let labels= [];
+        let views = [];
+        let backgroundColor = [];
+        arr.map(el => {
+          if(this.mostVisited.value < el.value){
+            this.mostVisited = {...el}
+          }
+          labels.push(el.label);
+          views.push(el.value);
+          backgroundColor.push(`rgba(${this.getRandomNumber()}, ${this.getRandomNumber()}, ${this.getRandomNumber()}, 0.5)`);
         });
-        
-        this.chart = new Chart('canvas', {
-          type: 'line',
+        console.log(this.mostVisited)
+        var myPieChart = new Chart(this.canvas.nativeElement, {
+          type: 'pie',
           data: {
-            labels: dates,
-            datasets: [
-              {
-                data: temp_max,
-                borderColor: '#3cba9f',
-                fill: false,
-                // lineTension: 0
-              },
-              {
-                data: temp_min,
-                borderColor: '#ffcc00',
-                fill: false,
-                // lineTension: 0
-              }
-            ]
+            datasets: [{
+              data: views,
+              backgroundColor,
+              borderColor: "black",
+            }],
+            labels: labels
+
           },
           options: {
-            legend: {
-              display: false
-            },
-            scales: {
-              xAxes: [{
-                display: true
-              }],
-              yAxes: [{
-                display: true
-              }]
+            legend:{
+              position: 'bottom'
             }
           }
-        })
+      });
 
+
+        // let temp_max = res['list'].map(res => res.main.temp_max);
+        // let temp_min = res['list'].map(res => res.main.temp_min);
+        // let allDates  = res['list'].map(res => res.dt);
+        // let dates = ["form 1", "form 2", "form 3"];
+        // allDates.forEach(res => {
+        //   let jsdate = new Date(res * 1000)
+        //   dates.push(jsdate.toLocaleTimeString('en', {year: 'numeric', month: 'short', day: 'numeric'}))
+        // });
+        
+      //   this.chart = new Chart(this.canvas.nativeElement, {
+      //     type: 'line',
+      //     data: {
+      //       labels: dates,
+      //       datasets: [
+      //         {
+      //           data: temp_min,
+      //           borderColor: '#3cba9f',
+      //           fill: false,
+      //           // lineTension: 0
+      //         },
+      //         {
+      //           data: temp_max,
+      //           borderColor: '#ffcc00',
+      //           fill: false,
+      //           // lineTension: 0
+      //         }
+      //       ]
+      //     },
+      //     options: {
+      //       legend: {
+      //         display: false
+      //       },
+      //       scales: {
+      //         xAxes: [{
+      //           display: true
+      //           // lineHeight: 1.0
+      //         }],
+      //         yAxes: [{
+      //           display: true
+      //         }]
+      //       }
+      //     }
+      //   })
       })
   }
   
@@ -67,7 +113,7 @@ export class StatsPage implements OnInit {
   //   let quant = [15, 2, 16, 20];
   //   let forms = ["form 1", "form 2", "form 3", "form 4"]
   
-  //   this.chart = new Chart('canvas', {
+  //   this.chart =  new Chart('canvas', {
   //     type: 'line',
   //     data: {
   //       labels: forms,
