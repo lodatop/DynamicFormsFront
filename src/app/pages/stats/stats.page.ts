@@ -41,7 +41,7 @@ export class StatsPage implements OnInit {
           }
           labels.push(el.label);
           views.push(el.value);
-          backgroundColor.push(`rgba(${this.getRandomNumber()}, ${this.getRandomNumber()}, ${this.getRandomNumber()}, 0.5)`);
+          backgroundColor.push(`rgb(${this.getRandomNumber()}, ${this.getRandomNumber()}, ${this.getRandomNumber()})`);
         });
         console.log(this.mostVisited)
         var myPieChart = new Chart(this.canvas.nativeElement, {
@@ -50,10 +50,10 @@ export class StatsPage implements OnInit {
             datasets: [{
               data: views,
               backgroundColor,
-              borderColor: "black",
+              borderColor: "#F6FFF8"
+              
             }],
             labels: labels
-
           },
           options: {
             legend:{
