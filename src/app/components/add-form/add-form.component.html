@@ -1,8 +1,27 @@
-<ion-item>
-    <ion-label>New Form's Name</ion-label>
-    <ion-input placeholder="Form's name"></ion-input>
+<form novalidate [formGroup]="formCreation">
+
+  <ion-item>
+      <ion-label stacked>Form Title</ion-label>
+      <ion-input type="text" formControlName="formTitle"></ion-input>
   </ion-item>
-  <ion-label>Select which Menu it belongs to</ion-label>
-  <ion-select placeholder="Select" [(ngModel)]="selected">
-    <ion-select-option *ngFor="let menu of list">{{menu}}</ion-select-option>
-</ion-select>
+  <ion-text *ngIf="formCreation.get('formTitle').hasError('required')">
+    Please for the love of God write the forms title.
+  </ion-text>
+
+  <ion-item>
+    <ion-label stacked>Form Description</ion-label>
+    <ion-input type="text" formControlName="formDescription"></ion-input>
+  </ion-item>
+  <ion-text *ngIf="formCreation.get('formDescription').hasError('required')">
+    Please for the love of God write the forms description.
+  </ion-text>
+
+  <ion-button [disabled]="!isEnabled" (click)='createForm()'>Create</ion-button>
+
+</form>
+
+<div *ngIf='formCreated'>
+  
+  <app-input-handler [formId]='formId'></app-input-handler>
+
+</div>

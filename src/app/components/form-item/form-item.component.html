@@ -1,3 +1,8 @@
+<ion-text *ngIf='menuData!==undefined'>
+  <h1>{{menuData.title_menu}}</h1>
+  <p>{{menuData.description_menu}}</p>
+</ion-text>
+
 
 <ion-list *ngIf='formList?.length'>
   <ion-text>
@@ -15,10 +20,10 @@
     <ion-text>
       <h1>List of Submenus</h1>
     </ion-text>  
-    <ion-item *ngFor='let menu of submenuList'>
-      <ion-text (click)='getMenu(menu.id_menu)'>
-        <h2>{{menu.title_menu}}</h2>
-        <p>{{menu.description_menu}}</p>
+    <ion-item *ngFor='let submenu of submenuList'>
+      <ion-text (click)='getMenu(submenu.id_menu)'>
+        <h2>{{submenu.title_menu}}</h2>
+        <p>{{submenu.description_menu}}</p>
       </ion-text>
     </ion-item>
   </ion-list>

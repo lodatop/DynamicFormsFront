@@ -97,9 +97,9 @@ export class AuthService {
    return this.http.post<Response>(`${serverUrl}/user/registerAdmin`, JSON.stringify(body), httpOptions);
   }
 
-  onUpdate(username: string, password: string, name: string, age: number, gender: string) {
+  onUpdate(username: string, name: string, email: string, age: number, gender: string) {
     const body = {
-        password: password,
+        email: email,
         username: username,
         name: name,
         age: age,

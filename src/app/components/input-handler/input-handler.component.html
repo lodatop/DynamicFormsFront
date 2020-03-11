@@ -1,0 +1,20 @@
+<form novalidate [formGroup]="addInputToForm">
+
+
+  <ion-item *ngIf='inputList?.length'>
+    <ion-label>Add existing input</ion-label>
+    <ion-select formControlName="inputId" placeholder="select input...">
+      <ion-select-option *ngFor='let input of inputList' value='input.id_input'>{{input.label_input}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  
+  <ion-item *ngIf='!inputList?.length'>
+    <ion-text> There are no existing inputs. Please create one.</ion-text>
+  </ion-item>
+
+  
+<ion-button (click)='addInput()'>Add input</ion-button>
+
+</form>
+
+<app-add-input (refreshInputs)='getInputs($event)'></app-add-input>

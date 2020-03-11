@@ -1,0 +1,33 @@
+<form novalidate [formGroup]="updateUser">
+
+  <ion-item>
+    <ion-label stacked>Username:</ion-label>
+    <ion-input formControlName="username"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Name:</ion-label>
+    <ion-input formControlName="name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Email:</ion-label>
+    <ion-input type='email' formControlName="email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Gender:</ion-label>
+    <ion-select placeholder="select input..." formControlName="gender">
+      <ion-select-option value='male'>Male</ion-select-option>
+      <ion-select-option value='female'>Female</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Age:</ion-label>
+    <ion-input type='number' formControlName="age"></ion-input>
+  </ion-item>
+
+  <ion-button (click)='update()'>Create input</ion-button>
+
+</form>
