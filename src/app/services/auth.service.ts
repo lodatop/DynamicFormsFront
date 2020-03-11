@@ -28,7 +28,7 @@ export class AuthService {
     return this.userData;
   }
 
-  async userIsAdmin(){
+  userIsAdmin(){
     return this.userData.admin_user;
   }
 
@@ -36,8 +36,8 @@ export class AuthService {
     await Storage.clear();
   }
 
-  // login(){
-  //   this.saveUser({name: "Wisam", username: "wisim"})
+  // async login(){
+  //   this.saveUser({name_user: "Wisam", username_user: "wisim", admin_user: true})
   // }
 
   onLogin(username: string , password: string) {

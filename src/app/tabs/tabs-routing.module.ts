@@ -18,12 +18,12 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tab3',
+        path: 'user',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../pages/tab3/tab3.module').then(m => m.Tab3PageModule)
+              import('../pages/user/user.module').then(m => m.UserPageModule)
           }
         ]
       },
