@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController, LoadingController, NavController } from '@ionic/angular';
 import { AuthService } from '../../services/auth.service';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +12,7 @@ export class LoginPage implements OnInit {
   username: string;
   password: string;
 
-  constructor(private router: Router, private toast: ToastController,
+  constructor(private toast: ToastController,
               private auth: AuthService, private loadingCtrl: LoadingController, private nav: NavController) { }
 
   ngOnInit() {
