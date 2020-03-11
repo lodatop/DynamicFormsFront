@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuService } from '../../services/menu.service';
+import { MenuService } from '../../services/menu/menu.service';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-menu-items',

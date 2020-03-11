@@ -8,12 +8,12 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { AuthService } from './services/auth.service';
-import { AnswerService } from './services/answer.service';
-import { OptionService } from './services/option.service';
-import { MenuService } from './services/menu.service';
-import { ChartService } from './services/chart.service'
-import { InputService } from './services/input.service';
+import { AuthService } from './services/auth/auth.service';
+import { AnswerService } from './services/answer/answer.service';
+import { OptionService } from './services/option/option.service';
+import { MenuService } from './services/menu/menu.service';
+import { ChartService } from './services/chart/chart.service'
+import { InputService } from './services/input/input.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({

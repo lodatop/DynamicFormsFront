@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MenuItemsComponent } from '../menu-items/menu-items.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { OptionService } from 'src/app/services/option.service';
+import { OptionService } from 'src/app/services/option/option.service';
 
 @Component({
   selector: 'app-add-form',

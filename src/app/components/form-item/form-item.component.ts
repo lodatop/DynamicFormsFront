@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { OptionService } from '../../services/option.service';
-import { MenuService } from '../../services/menu.service';
+import { OptionService } from '../../services/option/option.service';
+import { MenuService } from '../../services/menu/menu.service';
 import { Router } from '@angular/router';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { OptionService } from '../../services/option.service';
-import { InputService } from '../../services/input.service';
-import { AnswerService } from '../../services/answer.service';
+import { OptionService } from '../../services/option/option.service';
+import { InputService } from '../../services/input/input.service';
+import { AnswerService } from '../../services/answer/answer.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-dynamic-form',

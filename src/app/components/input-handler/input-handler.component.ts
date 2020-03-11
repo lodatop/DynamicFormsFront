@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { InputService } from '../../services/input.service';
+import { InputService } from '../../services/input/input.service';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { from } from 'rxjs';
 
