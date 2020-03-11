@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-menu-items',
@@ -9,9 +10,16 @@ import { Router } from '@angular/router';
 })
 export class MenuItemsComponent implements OnInit {
 
+  // list: any = [{title_menu: "menu prueba", description_menu: "este es el menu de prueba", id_menu: '1'}];
   list: any;
-  constructor(private menu: MenuService,
-    private router: Router) { }
+  userIsAdm: boolean;
+  constructor(
+    private menu: MenuService, 
+    private router: Router, 
+    private auth: AuthService
+    ) { 
+      this.userIsAdm = this.auth.userIsAdmin();
+  }
 
   ngOnInit() {
     this.getMenus();

@@ -1,8 +1,15 @@
 <ion-list *ngIf='list?.length'>
-  <ion-item *ngFor='let menu of list'>
-    <ion-text (click)='getMenu(menu.id_menu)'>
-      <h2>{{menu.title_menu}}</h2>
-      <p>{{menu.description_menu}}</p>
-    </ion-text>
-  </ion-item>
+  <ion-item-sliding #item>
+    <ion-item *ngFor='let menu of list'>
+      <ion-text (click)='getMenu(menu.id_menu)'>
+        <h2>{{ menu.title_menu }}</h2>
+        <p>{{ menu.description_menu }}</p>
+      </ion-text>
+    </ion-item>
+    <ion-item-options side="end" *ngIf="userIsAdm">
+      <ion-button expand="full" color="success" (click)="favorite(item)"><ion-icon name="brush"></ion-icon></ion-button>
+      <ion-button expand="full" color="danger" (click)="share(item)"><ion-icon name="trash"></ion-icon></ion-button>
+    </ion-item-options>
+
+  </ion-item-sliding>
 </ion-list>
