@@ -10,8 +10,11 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class MenuItemsComponent implements OnInit {
 
-  list: any = [{title_menu: "menu prueba", description_menu: "este es el menu de prueba", id_menu: '1'}];
-  // list: any;
+  // list: any = [
+  //   {title_menu: "menu prueba", description_menu: "este es el menu de prueba", id_menu: '1'},
+  //   {title_menu: "menu prueba2", description_menu: "este es el menu de prueba2", id_menu: '2'}
+  // ];
+  list: any;
   userIsAdm: boolean;
   constructor(
     private menu: MenuService, 
@@ -41,10 +44,10 @@ export class MenuItemsComponent implements OnInit {
   }
 
   editMenu(item){
-    console.log("edit menu")
+    console.log(item)
   }
 
   deleteMenu(item){
-    console.log("delete menu")
+    console.log(item)
   }
 }
