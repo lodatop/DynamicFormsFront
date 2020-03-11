@@ -44,7 +44,7 @@ export class OptionService {
     return this.option;
   }
 
-  setOption(newOption){
+  setOption(newOption: number){
     this.option = newOption;
   }
 }

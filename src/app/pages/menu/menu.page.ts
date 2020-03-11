@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { OptionService } from 'src/app/services/option/option.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-menu',
@@ -8,13 +10,19 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class MenuPage implements OnInit {
   userIsAdm: boolean = false;
-  constructor(private auth: AuthService) { }
+  constructor(
+    private auth: AuthService,
+    private opt: OptionService,
+    private nav: NavController
+    ) { }
 
   ngOnInit() {
     this.userIsAdm = this.auth.userIsAdmin()
   }
   
   goToAddMenu(){
-    console.log('hola')
+    this.opt.setOption(1);
+    // console.log(this.opt.getOption()
+    this.nav.navigateForward(['/views/add'])
   }
 }
