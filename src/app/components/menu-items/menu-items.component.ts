@@ -10,8 +10,8 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class MenuItemsComponent implements OnInit {
 
-  // list: any = [{title_menu: "menu prueba", description_menu: "este es el menu de prueba", id_menu: '1'}];
-  list: any;
+  list: any = [{title_menu: "menu prueba", description_menu: "este es el menu de prueba", id_menu: '1'}];
+  // list: any;
   userIsAdm: boolean;
   constructor(
     private menu: MenuService, 
@@ -38,5 +38,13 @@ export class MenuItemsComponent implements OnInit {
 
   getMenu(menuId: string){
     this.router.navigateByUrl(`/views/submenu/${menuId}`)
+  }
+
+  editMenu(item){
+    console.log("edit menu")
+  }
+
+  deleteMenu(item){
+    console.log("delete menu")
   }
 }
