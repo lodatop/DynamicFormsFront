@@ -19,4 +19,8 @@ export class AddItemComponent implements OnInit {
     this.option = this.opt.getOption();
   }
   
+  goBack(){
+    this.nav.back();
+  }
+
 }

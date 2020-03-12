@@ -1,10 +1,23 @@
 <div *ngIf="option == 1">
-    <ion-header>
-      <ion-toolbar color=primary>
-        <ion-title>Add Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <app-add-menu></app-add-menu>
+  <ion-header>
+    <ion-toolbar color=primary>
+      <ion-grid style="padding: 0;">
+        <ion-row class="ion-align-items-center">
+          <ion-col size="2" size-lg>
+            <ion-icon 
+              (click)="goBack()"
+              style="font-size:40px; margin-left: 5px;"
+              name="arrow-back">
+            </ion-icon>
+          </ion-col>
+          <ion-col size="10" size-lg style="padding: 0; margin: 0;">
+            <ion-title style="padding: 0; margin: 0;">Add Menu</ion-title>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
+  </ion-header>
+  <app-add-menu></app-add-menu>
 </div>
 
 <div *ngIf="menuId">
@@ -12,7 +25,20 @@
   <div *ngIf="option == 1">
     <ion-header>
       <ion-toolbar color=primary>
-        <ion-title>Add Menu</ion-title>
+        <ion-grid style="padding: 0;">
+          <ion-row class="ion-align-items-center">
+            <ion-col size="2" size-lg>
+              <ion-icon 
+                (click)="goBack()"
+                style="font-size:40px; margin-left: 5px;"
+                name="arrow-back">
+              </ion-icon>
+            </ion-col>
+            <ion-col size="10" size-lg style="padding: 0; margin: 0;">
+              <ion-title style="padding: 0; margin: 0;">Add Menu</ion-title>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-toolbar>
     </ion-header>
     <app-add-menu [menuId]='menuId'></app-add-menu>
@@ -20,10 +46,24 @@
 
   <div *ngIf="option == 2">
     <ion-header>
-      <ion-toolbar color=primary>
-        <ion-title>Add Form</ion-title>
-      </ion-toolbar>
-    </ion-header>
+      <ion-header>
+        <ion-toolbar color=primary>
+          <ion-grid style="padding: 0;">
+            <ion-row class="ion-align-items-center">
+              <ion-col size="2" size-lg>
+                <ion-icon 
+                  (click)="goBack()"
+                  style="font-size:40px; margin-left: 5px;"
+                  name="arrow-back">
+                </ion-icon>
+              </ion-col>
+              <ion-col size="10" size-lg style="padding: 0; margin: 0;">
+                <ion-title style="padding: 0; margin: 0;">Add Form</ion-title>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-toolbar>
+      </ion-header>
     <app-add-form [menuId]='menuId'></app-add-form>
   </div>
 </div>

@@ -27,7 +27,7 @@ export class UpdateUserComponent implements OnInit {
   }
 
   edit(){
-    this.isEnabled = true;
+    this.isEnabled = !this.isEnabled;
   }
 
   setUserData(){
