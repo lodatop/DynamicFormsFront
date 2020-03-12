@@ -1,10 +1,10 @@
-<ion-text *ngIf='menuData'>
-  <p>{{menuData.description_menu}}</p>
-</ion-text>
+<ion-item *ngIf='menuData' style="padding: 15px; background-color: transparent;">
+  <ion-text style="font-size: 25px; background-color: transparent;"> {{menuData.description_menu}} </ion-text>
+</ion-item>
 
-<ion-list>
+<ion-list style="padding: 0;">
   <ion-grid style="padding: 0;">
-    <ion-row class="ion-align-items-center">
+    <ion-row class="ion-align-items-center" style="padding:10px 0; margin: 0; background-color: rgb(46, 68, 80);">
       <ion-col size="10" size-lg style="padding: 0; margin: 0;">
         <ion-title>List of Submenus</ion-title>
       </ion-col>
@@ -46,7 +46,7 @@
 
 <ion-list>
   <ion-grid style="padding: 0;">
-    <ion-row class="ion-align-items-center">
+    <ion-row class="ion-align-items-center" style="padding:10px 0; margin: 0; background-color: rgb(46, 68, 80);">
       <ion-col size="10" size-lg style="padding: 0; margin: 0;">
         <ion-title>List of Forms</ion-title>
       </ion-col>
@@ -85,4 +85,4 @@
   </ion-list>
 </ion-list>
 
-<ion-button class="delete-button" expand="block" color="danger" (click)="deleteSubmenu(menuId)">delete this submenu</ion-button>
+<ion-button *ngIf="userIsAdm" class="delete-button" expand="block" color="danger" (click)="deleteSubmenu(menuId)">delete this submenu</ion-button>

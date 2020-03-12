@@ -1,5 +1,6 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { AuthService } from '../../services/auth/auth.service';
+import { ToastController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,11 @@ export class RegisterPage implements OnInit, DoCheck {
   age: number;
   isDisabled: boolean = true;
 
-  constructor(private auth: AuthService) { }
+  constructor(
+    private auth: AuthService,
+    private toast: ToastController,
+    private nav: NavController
+    ) { }
 
   ngOnInit() {
   }
@@ -30,8 +35,14 @@ export class RegisterPage implements OnInit, DoCheck {
   }
 
   register() {
-    this.auth.onRegister(this.name, this.username, this.email, this.password, this.age, this.gender).subscribe((data) => {
-      console.log(data);
+    this.auth.onRegister(this.name, this.username, this.email, this.password, this.age, this.gender).subscribe(async (data) => {
+      const toast = await this.toast.create({
+        message: 'User registered succesfully',
+        duration: 2000,
+        color: 'primary'
+      });
+      toast.present();
+      this.nav.navigateRoot(['/login']);
     })
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { InputService } from '../../services/input/input.service';
 import { Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
 import { from } from 'rxjs';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-input-handler',
@@ -16,7 +17,7 @@ export class InputHandlerComponent implements OnInit {
   addInputToForm : FormGroup;
   inputId: AbstractControl;
 
-  constructor(private input: InputService, public formBuilder: FormBuilder){
+  constructor(private input: InputService, public formBuilder: FormBuilder, private toast: ToastController){
     this.addInputToForm = this.formBuilder.group({
       inputId: ['', Validators.required]
     });
@@ -41,8 +42,17 @@ export class InputHandlerComponent implements OnInit {
   addInput(){
     if(this.addInputToForm.valid){
       console.log(this.inputId.value);
-      this.input.addInputToForm(this.formId, this.inputId.value).subscribe((results)=>{
+      this.input.addInputToForm(this.formId, this.inputId.value).subscribe(async (results)=>{
         this.getInputs();
+        this.addInputToForm.setValue({
+          inputId: ''
+        });
+        const toast = await this.toast.create({
+          message: 'Input was added bitch',
+          duration: 2000,
+          color: 'primary'
+        })
+        toast.present()
       })
     }
   }

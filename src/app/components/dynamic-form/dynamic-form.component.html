@@ -1,9 +1,9 @@
-
-<ion-list *ngIf='inputList?.length'>
+<div *ngIf='inputList?.length'>
+<ion-list style="padding-left: 10px;">
   <ion-text>
     <h1>{{inputList[0].title_form}}</h1>
   </ion-text>  
-  <ion-item *ngFor='let input of inputList; let i = index'>
+  <ion-item  *ngFor='let input of inputList; let i = index'>
       <ion-label>{{input.label_input}}</ion-label>
       <div [ngSwitch]="input.type_input">
         <ion-input *ngSwitchCase="'text'" type="text" [(ngModel)]="answerArray[i].answer"  required></ion-input>
@@ -14,5 +14,6 @@
         <ion-input *ngSwitchDefault [(ngModel)]="answerArray[i].answer"  required></ion-input>
       </div>
     </ion-item>
-    <ion-button (click)="onSubmit()" color="primary" size="large">Submit</ion-button>
-  </ion-list>
+</ion-list>
+<ion-button expand="block" size="medium" color="primary" (click)="onSubmit()">Submit</ion-button>
+</div>
