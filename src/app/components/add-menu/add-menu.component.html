@@ -1,4 +1,21 @@
-<ion-item>
-  <ion-label>New Menu's Name</ion-label>
-  <ion-input placeholder="Menu's name"></ion-input>
-</ion-item>
+<form novalidate [formGroup]="menuCreation">
+
+  <ion-item>
+      <ion-label stacked>Menu Title</ion-label>
+      <ion-input type="text" formControlName="menuTitle"></ion-input>
+  </ion-item>
+  <ion-text *ngIf="menuCreation.get('menuTitle').hasError('required')">
+    Please for the love of God write the menus title.
+  </ion-text>
+
+  <ion-item>
+    <ion-label stacked>Menu Description</ion-label>
+    <ion-input type="text" formControlName="menuDescription"></ion-input>
+  </ion-item>
+  <ion-text *ngIf="menuCreation.get('menuDescription').hasError('required')">
+    Please for the love of God write the menus description.
+  </ion-text>
+
+  <ion-button (click)='createMenu()'>Create</ion-button>
+
+</form>

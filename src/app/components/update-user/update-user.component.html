@@ -2,22 +2,22 @@
 
   <ion-item>
     <ion-label stacked>Username:</ion-label>
-    <ion-input formControlName="username"></ion-input>
+    <ion-input [disabled]='!isEnabled' formControlName="username"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label stacked>Name:</ion-label>
-    <ion-input formControlName="name"></ion-input>
+    <ion-input [disabled]='!isEnabled' formControlName="name"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label stacked>Email:</ion-label>
-    <ion-input type='email' formControlName="email"></ion-input>
+    <ion-input [disabled]='!isEnabled' type='email' formControlName="email"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label>Gender:</ion-label>
-    <ion-select placeholder="select input..." formControlName="gender">
+    <ion-select [disabled]='!isEnabled' placeholder="select input..." formControlName="gender">
       <ion-select-option value='male'>Male</ion-select-option>
       <ion-select-option value='female'>Female</ion-select-option>
     </ion-select>
@@ -25,9 +25,10 @@
 
   <ion-item>
     <ion-label stacked>Age:</ion-label>
-    <ion-input type='number' formControlName="age"></ion-input>
+    <ion-input [disabled]='!isEnabled' type='number' formControlName="age"></ion-input>
   </ion-item>
 
-  <ion-button (click)='update()'>Create input</ion-button>
+  <ion-button (click)='edit()'>Edit User.</ion-button>
+  <ion-button [disabled]='!isEnabled' (click)='update()'>Update User.</ion-button>
 
 </form>

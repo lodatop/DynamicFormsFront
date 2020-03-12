@@ -11,7 +11,7 @@ import { OptionService } from 'src/app/services/option/option.service';
 export class AddItemComponent implements OnInit {
   
   option: number;
-  menuId: any;
+  @Input() menuId?: string;
   constructor(private nav: NavController, private opt: OptionService) {
   }
 

@@ -7,7 +7,8 @@ const routes: Routes = [
   { path: 'views', loadChildren:() => import('./tabs/tabs.module').then( m => m.TabsPageModule) },
   { path: 'views/submenu/:menuId', loadChildren: () => import('./pages/submenu/submenu.module').then( m => m.SubmenuPageModule) },
   { path: 'views/form/:formId', loadChildren: () => import('./pages/form/form.module').then( m => m.FormPageModule) },
-  { path: 'views/add', loadChildren: () => import('./pages/add/add.module').then( m => m.AddPageModule) }
+  { path: 'views/add', loadChildren: () => import('./pages/add/add.module').then( m => m.AddPageModule) },
+  { path: 'views/add/:menuId', loadChildren: () => import('./pages/add/add.module').then( m => m.AddPageModule) }
 
 ];
 @NgModule({

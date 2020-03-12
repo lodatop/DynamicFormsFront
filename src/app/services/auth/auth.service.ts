@@ -40,6 +40,11 @@ export class AuthService {
   //   this.saveUser({name_user: "Wisam", username_user: "wisim", admin_user: true})
   // }
 
+  getUser(){
+    const serverUrl = this.url;
+    return this.http.get<Response>(`${serverUrl}/user`,{withCredentials: true});
+  }
+
   onLogin(username: string , password: string) {
     const body = {
         password: password,

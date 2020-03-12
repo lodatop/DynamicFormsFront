@@ -6,11 +6,24 @@
     </ion-header>
     <app-add-menu></app-add-menu>
 </div>
-<div *ngIf="option == 2">
+
+<div *ngIf="menuId">
+
+  <div *ngIf="option == 1">
+    <ion-header>
+      <ion-toolbar color=primary>
+        <ion-title>Add Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <app-add-menu [menuId]='menuId'></app-add-menu>
+  </div>
+
+  <div *ngIf="option == 2">
     <ion-header>
       <ion-toolbar color=primary>
         <ion-title>Add Form</ion-title>
       </ion-toolbar>
     </ion-header>
     <app-add-form [menuId]='menuId'></app-add-form>
+  </div>
 </div>

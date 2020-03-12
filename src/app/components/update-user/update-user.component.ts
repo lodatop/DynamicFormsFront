@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class UpdateUserComponent implements OnInit {
 
   updateUser : FormGroup;
+  isEnabled : boolean = false;
   constructor(private auth: AuthService, public formBuilder: FormBuilder, private router: Router) {
     this.updateUser = this.formBuilder.group({
       username: ['', Validators.required],
@@ -22,7 +23,24 @@ export class UpdateUserComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.setUserData()
+  }
 
+  edit(){
+    this.isEnabled = true;
+  }
+
+  setUserData(){
+    this.auth.getUser().subscribe((results) => {
+      var user = results.data;
+      this.updateUser.setValue({
+        username: user.username_user,
+        name: user.name_user,
+        email: user.email_user,
+        gender: user.gender_user,
+        age: user.age_user
+      })
+    })
   }
 
   update(){

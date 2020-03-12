@@ -1,3 +1,7 @@
-<ion-content>
+<ion-content *ngIf='menuId'>
+  <app-add-item [menuId]='menuId'></app-add-item>
+</ion-content>
+<ion-content *ngIf='!menuId'>
   <app-add-item></app-add-item>
 </ion-content>
+

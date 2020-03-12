@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AddItemComponent } from '../../components/add-item/add-item.component';
+import { ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'app-add',
@@ -8,9 +9,11 @@ import { AddItemComponent } from '../../components/add-item/add-item.component';
 })
 export class AddPage implements OnInit {
 
-  constructor() { }
+  private menuId: string;
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.menuId = this.route.snapshot.paramMap.get('menuId')
   }
 
 }

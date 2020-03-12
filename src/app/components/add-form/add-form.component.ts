@@ -16,14 +16,12 @@ export class AddFormComponent implements OnInit {
   formCreated:boolean = false;
   formId: string;
   constructor(public formBuilder: FormBuilder, private form: OptionService) {
-    
+    this.formCreation = this.formBuilder.group({
+      formTitle: ['', Validators.required],
+      formDescription: ['', Validators.required]
+    });
   }
-      ngOnInit(): void {
-            
-        this.formCreation = this.formBuilder.group({
-          formTitle: ['', Validators.required],
-          formDescription: ['', Validators.required]
-        });  }
+      ngOnInit() {}
 
     createForm() {
         if (this.formCreation.valid) {
