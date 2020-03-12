@@ -26,8 +26,8 @@
 
   <ion-list *ngIf='submenuList?.length'>
     <ion-item-sliding #item *ngFor='let submenu of submenuList'>
-      <ion-item>
-        <ion-text (click)='getMenu(submenu.id_menu)'>
+      <ion-item (click)='getMenu(submenu.id_menu)'>
+        <ion-text>
           <h2>{{submenu.title_menu}}</h2>
           <p>{{submenu.description_menu}}</p>
         </ion-text>
@@ -67,8 +67,8 @@
 
   <ion-list *ngIf='formList?.length'>
     <ion-item-sliding #item *ngFor='let form of formList'>
-      <ion-item>
-        <ion-text (click)='getForm(form.id_form)'>
+      <ion-item (click)='getForm(form.id_form)'>
+        <ion-text>
           <h2>{{form.title_form}}</h2>
           <p>{{form.description_form}}</p>
         </ion-text>
@@ -85,4 +85,4 @@
   </ion-list>
 </ion-list>
 
-<ion-button class="delete-button" expand="block" color="danger" (click)="logout()">delete this submenu</ion-button>
+<ion-button class="delete-button" expand="block" color="danger" (click)="deleteSubmenu(menuId)">delete this submenu</ion-button>

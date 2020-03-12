@@ -67,6 +67,9 @@ export class FormItemComponent implements OnInit {
   deleteSubmenu(menuId: string){
     this.menu.deleteMenu(menuId).subscribe(()=>{
       this.getData()
+      if(this.menuId == menuId){
+        this.nav.navigateRoot(['/views/menu']);
+      }
     })
   }
 
