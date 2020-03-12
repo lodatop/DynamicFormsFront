@@ -1,6 +1,20 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Register</ion-title>
+    <ion-grid style="padding: 0;">
+      <ion-row class="ion-align-items-center">
+        <ion-col size="2" size-lg>
+          <ion-icon 
+            (click)="goBack()"
+            style="font-size:40px; margin-left: 5px;"
+            name="arrow-back">
+          </ion-icon>
+        </ion-col>
+        <ion-col size="10" size-lg style="padding: 0; margin: 0;">
+          <ion-title>Register Admin</ion-title>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
   </ion-toolbar>
 </ion-header>
 
@@ -77,16 +91,11 @@
 
       <ion-button 
         [disabled]="isDisabled" 
-        (click)="register()" 
+        (click)="registerAdmin()" 
         expand="block" 
         color="primary" 
         size="medium"
         style="margin-top: 10px;">Register</ion-button>
-      <ion-item >
-        <ion-text style="margin: auto;">
-          <a [routerLink]="['/login']" >Go back to login</a>
-        </ion-text>
-      </ion-item>
 
     </ion-card-content>
   </ion-card>

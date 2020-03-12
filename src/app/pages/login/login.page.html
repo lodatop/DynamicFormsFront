@@ -1,26 +1,42 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title >Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
-  <ion-card>
     <ion-card-header>
       <ion-card-subtitle>Ingrese sus datos</ion-card-subtitle>
-      <!-- <ion-card-title></ion-card-title> -->
     </ion-card-header>
 
-    <ion-card-content>
-      <ion-label>Username:</ion-label>
-      <ion-input [(ngModel)]="username" placeholder="Enter username..."></ion-input>
-      <ion-label>Password:</ion-label>
-      <ion-input [(ngModel)]="password" type="password" placeholder="Enter password..."></ion-input>
-      <ion-button (click)="login()" color="primary" size="large">Login</ion-button>
-      <ion-button [routerLink]="['/register']" color="primary" size="large">Register</ion-button>
+    <ion-list>
+      <ion-item>
+          <ion-label position="stacked">Username:</ion-label>
+          <ion-input
+            [(ngModel)]="username"
+            type="text"
+            placeholder="Enter username..."
+            required="true">
+          </ion-input>
+      </ion-item>
 
-    </ion-card-content>
-  </ion-card>
+      <ion-item>
+        <ion-label position="stacked">Password:</ion-label>
+        <ion-input 
+          [(ngModel)]="password"
+          placeholder="Enter password..."
+          type="password"
+          required="true">
+        </ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-button [disabled]="isDisabled" (click)="login()" expand="block" color="primary" size="medium">Login</ion-button>
+    <ion-item >
+      <ion-text style="margin: auto;">If you don't have an account, 
+        <a [routerLink]="['/register']" >Register</a>
+      </ion-text>
+    </ion-item>
 
 </ion-content>

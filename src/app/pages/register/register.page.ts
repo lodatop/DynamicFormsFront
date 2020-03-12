@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { AuthService } from '../../services/auth/auth.service';
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
-export class RegisterPage implements OnInit {
+export class RegisterPage implements OnInit, DoCheck {
 
   name: string;
   email: string;
@@ -14,10 +14,19 @@ export class RegisterPage implements OnInit {
   password: string;
   gender: string;
   age: number;
+  isDisabled: boolean = true;
 
   constructor(private auth: AuthService) { }
 
   ngOnInit() {
+  }
+
+  ngDoCheck() {
+    if(this.name !== "" && this.email !=="" && this.username !=="" && this.password !=="" && this.gender !=="" && this.age ){
+      this.isDisabled = false;
+    }else{
+      this.isDisabled = true;
+    }
   }
 
   register() {
