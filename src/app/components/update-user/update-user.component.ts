@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router } from '@angular/router';
 
@@ -9,9 +9,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./update-user.component.scss'],
 })
 export class UpdateUserComponent implements OnInit {
-
+  
+  username: AbstractControl;
+  name: AbstractControl;
+  email: AbstractControl;
+  gender: AbstractControl;
+  age: AbstractControl;
   updateUser : FormGroup;
-  isEnabled : boolean = false;
+  isDisabled: boolean = true;
+  
   constructor(private auth: AuthService, public formBuilder: FormBuilder, private router: Router) {
     this.updateUser = this.formBuilder.group({
       username: ['', Validators.required],
@@ -20,6 +26,12 @@ export class UpdateUserComponent implements OnInit {
       gender: ['', Validators.required],
       age: ['', Validators.required]
     });
+
+    this.username = this.updateUser.controls['username'];
+    this.name = this.updateUser.controls['name'];
+    this.email = this.updateUser.controls['email'];
+    this.gender = this.updateUser.controls['gender'];
+    this.age = this.updateUser.controls['age'];
    }
 
   ngOnInit() {
@@ -27,7 +39,7 @@ export class UpdateUserComponent implements OnInit {
   }
 
   edit(){
-    this.isEnabled = !this.isEnabled;
+    this.isDisabled = !this.isDisabled;
   }
 
   setUserData(){
@@ -45,7 +57,7 @@ export class UpdateUserComponent implements OnInit {
 
   update(){
     if(this.updateUser.valid){
-      this.auth.onUpdate(this.updateUser.get('username').value,this.updateUser.get('name').value,this.updateUser.get('email').value, this.updateUser.get('age').value, this.updateUser.get('gender').value).subscribe((results)=>{
+      this.auth.onUpdate(this.username.value,this.name.value,this.email.value, this.age.value, this.gender.value).subscribe((results)=>{
         this.router.navigateByUrl('views/menu')
       })
     }
