@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../../services/menu/menu.service';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -22,13 +22,19 @@ export class MenuItemsComponent implements OnInit {
     private auth: AuthService
     ) { 
       this.userIsAdm = this.auth.userIsAdmin();
+
+      this.router.events.subscribe((e) => {
+        if (e instanceof NavigationEnd) {
+            this.getMenus()
+        }
+     });
   }
 
   ngOnInit() {
     this.getMenus();
   }
 
-  ionViewWillEnter(){
+  ionViewDidEnter(){
     this.getMenus();
   }
 

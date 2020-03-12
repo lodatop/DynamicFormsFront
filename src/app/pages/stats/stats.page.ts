@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ChartService } from '../../services/chart/chart.service';
 import { Chart } from 'chart.js';
+import { OptionService } from 'src/app/services/option/option.service';
 
 @Component({
   selector: 'app-stats',
@@ -10,10 +11,11 @@ import { Chart } from 'chart.js';
 export class StatsPage implements OnInit {
 
   chart: any = {};
+  formList: any;
   @ViewChild("canvas", {static: false}) canvas: ElementRef;
   mostVisited = {title_form: '', completed_form: 0};
 
-  constructor( private stats: ChartService ) { }
+  constructor( private stats: ChartService, private form: OptionService ) { }
   
   ionViewWillEnter(){
   }
@@ -23,20 +25,17 @@ export class StatsPage implements OnInit {
   }
 
   ngOnInit() {
-    this.stats.getFormStadistics()
-      .subscribe(res => {
-        // let arr = res['list'].map(res => res);
-        let arr = [
-          {title_form: "form1", completed_form: 50}, 
-          {title_form: "form2", completed_form: 45}, 
-          {title_form: "form3", completed_form: 10}, 
-          {title_form: "form5", completed_form: 61}, 
-          {title_form: "form4", completed_form: 25}
-        ];
+    
         let title_forms = [];
         let completed = [];
         let backgroundColor = [];
-        arr.map(el => {
+        
+        this.form.getForms().subscribe((results)=> {
+          this.formList = results;
+
+          console.log(this.formList)
+       
+        this.formList.map(el => {
           if(this.mostVisited.completed_form < el.completed_form){
             this.mostVisited = {...el}
           }
@@ -61,7 +60,9 @@ export class StatsPage implements OnInit {
               position: 'bottom'
             }
           }
-      });
+        });
+        })
+        
 
 
         // let temp_max = res['list'].map(res => res.main.temp_max);
@@ -107,7 +108,7 @@ export class StatsPage implements OnInit {
       //       }
       //     }
       //   })
-      })
+      
   }
   
   // showStats() {

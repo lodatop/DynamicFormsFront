@@ -9,12 +9,13 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./menu.page.scss'],
 })
 export class MenuPage implements OnInit {
-  userIsAdm: boolean = false;
+  userIsAdm: boolean;
   constructor(
     private auth: AuthService,
     private opt: OptionService,
     private nav: NavController
-    ) { }
+    ) {
+    }
 
   ngOnInit() {
     this.userIsAdm = this.auth.userIsAdmin()

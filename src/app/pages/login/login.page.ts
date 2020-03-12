@@ -18,7 +18,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
   
-  async login() {
+  login() {
     this.loadingCtrl
         .create({ keyboardClose: true, message: 'Logging in...' })
         .then(loadingEl => {
@@ -26,7 +26,9 @@ export class LoginPage implements OnInit {
           this.auth.onLogin(this.username, this.password).subscribe((data) => {
             loadingEl.dismiss();
             if (data.status === 200) {
-              this.nav.navigateRoot(['/views/menu'])
+              this.auth.userIsLoged().then(()=>{
+                this.nav.navigateRoot(['/views/menu'])
+              })
           }
           });
         })

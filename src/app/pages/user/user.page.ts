@@ -13,7 +13,6 @@ export class UserPage implements OnInit {
 
   constructor(private auth: AuthService, private nav: NavController) { 
     this.userData = {...this.auth.getUserData()}
-    console.log(this.userData)
    }
 
   ngOnInit() {

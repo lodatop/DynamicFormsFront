@@ -124,8 +124,8 @@ export class AuthService {
     const serverUrl = this.url;
     return this.http.get<Response>(`${serverUrl}/logout`, {withCredentials: true}).pipe(
       tap(data => {
-        Storage.clear();
-        // Storage.remove({ key: 'user' });
+        //Storage.clear();
+        Storage.remove({ key: 'user' });
         this.userData = "";
       })
     );
