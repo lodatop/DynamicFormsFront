@@ -40,6 +40,11 @@ export class OptionService {
     return this.http.get<Response>(`${serverUrl}/form/`, {withCredentials: true});
   }
 
+  getForm(formId: string){
+    const serverUrl = this.url;
+    return this.http.get<Response>(`${serverUrl}/form/${formId}/form`, {withCredentials: true});
+  }
+
   getOption(){
     return this.option;
   }

@@ -12,7 +12,6 @@ export class SubmenuPage implements OnInit {
   
   menuId: string;
   menuData: any;
-  // menuData: any = {title_menu: "menu prueba", description_menu: "este es el menu de prueba", id_menu: '1'}
   constructor( 
     private route: ActivatedRoute, 
     private nav: NavController, 
