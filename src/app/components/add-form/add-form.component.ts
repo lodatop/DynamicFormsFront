@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, DoCheck } from '@angular/core';
 import { MenuItemsComponent } from '../menu-items/menu-items.component';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { OptionService } from 'src/app/services/option/option.service';
 
 @Component({
@@ -8,11 +8,13 @@ import { OptionService } from 'src/app/services/option/option.service';
   templateUrl: './add-form.component.html',
   styleUrls: ['./add-form.component.scss'],
 })
-export class AddFormComponent implements OnInit {
+export class AddFormComponent implements OnInit, DoCheck {
   
+  isDisabled: boolean = true;
+  formTitle: AbstractControl;
+  formDescription: AbstractControl;
   formCreation : FormGroup;
   @Input() menuId: string;
-  isEnabled:boolean = true;
   formCreated:boolean = false;
   formId: string;
   
@@ -21,15 +23,26 @@ export class AddFormComponent implements OnInit {
       formTitle: ['', Validators.required],
       formDescription: ['', Validators.required]
     });
+
+    this.formTitle = this.formCreation.controls['formTitle'];
+    this.formDescription = this.formCreation.controls['formDescription'];
   }
   
   ngOnInit() {}
 
+  ngDoCheck() {
+    if(this.formTitle.value == "" || this.formDescription.value ==""){
+      this.isDisabled = true;
+    }else{
+      this.isDisabled = false;
+    }
+  }
+
   createForm() {
     if (this.formCreation.valid) {
-      this.form.createForm(this.menuId, this.formCreation.get('formTitle').value, this.formCreation.get('formDescription').value).subscribe((results) => {
+      // this.formCreated = true;
+      this.form.createForm(this.menuId, this.formTitle.value, this.formDescription.value).subscribe((results) => {
         this.formCreated = true;
-        this.isEnabled = false;
         this.formId = results.data.id;
       })
     }

@@ -1,31 +1,41 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, DoCheck } from '@angular/core';
 import { OptionService } from '../../services/option/option.service';
 import { MenuService } from '../../services/menu/menu.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-form-item',
   templateUrl: './form-item.component.html',
   styleUrls: ['./form-item.component.scss'],
 })
-export class FormItemComponent implements OnInit {
+export class FormItemComponent implements OnInit, DoCheck {
 
   @Input() menuId: string;
-  submenuList: any;
-  formList: any;
+  // submenuList: any = [{title_menu: "menu prueba", description_menu: "este es el menu de prueba", id_menu: '1'}];
+  submenuList: any = [];
+  formList: any = [];
+  userIsAdm: boolean;
   menuData: any;
   // menuData: {} = {title_menu: "menu prueba", description_menu: "este es el menu de prueba", id_menu: '1'}
-  constructor(private form: OptionService, private menu: MenuService, 
-    private router: Router) { }
+  constructor(
+    private opt: OptionService, 
+    private menu: MenuService, 
+    private auth: AuthService, 
+    private nav: NavController,
+    private router: Router) { 
+      this.userIsAdm = this.auth.userIsAdmin();
+    }
 
   ngOnInit() {
     this.getData();
   }
 
-  ionViewWillEnter(){
+  ngDoCheck(){
     this.getData();
   }
-
+  
   getData(){ 
     this.menu.getMenusByParent(this.menuId).subscribe((results) => {
       this.submenuList = results.data.submenus;
@@ -35,12 +45,20 @@ export class FormItemComponent implements OnInit {
   }
 
   getForm(formId: string){
-    this.router.navigateByUrl(`/views/form/${formId}`)
+    this.router.navigateByUrl(`/views/form/${formId}`);
   }
 
   getMenu(menuId: string){
-    this.router.navigateByUrl(`/views/submenu/${menuId}`)
+    this.router.navigateByUrl(`/views/submenu/${menuId}`);
   }
 
-  addMenu(){}
+  addMenuToSubmenu(){
+    this.opt.setOption(1);
+    this.nav.navigateForward([`/views/add/${this.menuId}`]);
+  }
+
+  addFormToSubmenu(){
+    this.opt.setOption(2);
+    this.nav.navigateForward([`/views/add/${this.menuId}`]);
+  }
 }

@@ -1,35 +1,88 @@
-<ion-text *ngIf='menuData!==undefined'>
+<ion-text *ngIf='menuData'>
   <p>{{menuData.description_menu}}</p>
 </ion-text>
 
-<ion-list *ngIf='formList?.length'>
-  <ion-text>
-    <h1>List of Forms</h1>
-  </ion-text>  
-  <ion-item *ngFor='let form of formList'>
-      <ion-text (click)='getForm(form.id_form)'>
-        <h2>{{form.title_form}}</h2>
-        <p>{{form.description_form}}</p>
-      </ion-text>
+<ion-list>
+  <ion-grid style="padding: 0;">
+    <ion-row class="ion-align-items-center">
+      <ion-col size="10" size-lg style="padding: 0; margin: 0;">
+        <ion-title>List of Submenus</ion-title>
+      </ion-col>
+      <ion-col size="2" size-lg *ngIf="userIsAdm">
+        <ion-icon 
+          (click)="addMenuToSubmenu()"
+          name="add-outline" 
+          style="font-size:40px">
+        </ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list *ngIf='!submenuList?.length'>
+    <ion-item>
+      This Submenu has no submenus
     </ion-item>
   </ion-list>
 
   <ion-list *ngIf='submenuList?.length'>
-    <ion-text>
-      <h1>List of Submenus</h1>
-    </ion-text>  
-    <ion-item *ngFor='let submenu of submenuList'>
-      <ion-text (click)='getMenu(submenu.id_menu)'>
-        <h2>{{submenu.title_menu}}</h2>
-        <p>{{submenu.description_menu}}</p>
-      </ion-text>
+    <ion-item-sliding #item *ngFor='let submenu of submenuList'>
+      <ion-item>
+        <ion-text (click)='getMenu(submenu.id_menu)'>
+          <h2>{{submenu.title_menu}}</h2>
+          <p>{{submenu.description_menu}}</p>
+        </ion-text>
+      </ion-item>
+      <ion-item-options side="end" *ngIf="userIsAdm">
+        <ion-button
+          expand="full" 
+          color="danger" 
+          (click)="deleteSubmenu(submenu.id_menu)">
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list> 
+</ion-list>
+
+<ion-list>
+  <ion-grid style="padding: 0;">
+    <ion-row class="ion-align-items-center">
+      <ion-col size="10" size-lg style="padding: 0; margin: 0;">
+        <ion-title>List of Forms</ion-title>
+      </ion-col>
+      <ion-col size="2" size-lg *ngIf="userIsAdm">
+        <ion-icon 
+          (click)="addFormToSubmenu()"
+          name="add-outline" 
+          style="font-size:40px">
+        </ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list *ngIf='!formList?.length'>
+    <ion-item>
+      This Submenu has no forms
     </ion-item>
   </ion-list>
 
-  <ion-list *ngIf='!submenuList?.length && !formList?.length'>
-    <ion-item>
-      This Menu is empty
-    </ion-item>
+  <ion-list *ngIf='formList?.length'>
+    <ion-item-sliding #item *ngFor='let form of formList'>
+      <ion-item>
+        <ion-text (click)='getForm(form.id_form)'>
+          <h2>{{form.title_form}}</h2>
+          <p>{{form.description_form}}</p>
+        </ion-text>
+      </ion-item>
+      <ion-item-options side="end" *ngIf="userIsAdm">
+        <ion-button
+          expand="full" 
+          color="danger" 
+          (click)="deleteForm(form.id_form)">
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
-  
-  
+</ion-list>
+
+<ion-button class="delete-button" expand="block" color="danger" (click)="logout()">delete this submenu</ion-button>

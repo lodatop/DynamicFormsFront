@@ -22,7 +22,6 @@ export class MenuPage implements OnInit {
   
   goToAddMenu(){
     this.opt.setOption(1);
-    // console.log(this.opt.getOption()
     this.nav.navigateForward(['/views/add'])
   }
 }

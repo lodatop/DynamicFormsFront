@@ -10,13 +10,17 @@ import { MenuService } from 'src/app/services/menu/menu.service';
 })
 export class SubmenuPage implements OnInit {
   
-  public menuId: string;
-  menuData: {};
-  // menuData: {} = {title_menu: "menu prueba", description_menu: "este es el menu de prueba", id_menu: '1'}
-  constructor( private route: ActivatedRoute, private nav: NavController, private menu: MenuService) { }
+  menuId: string;
+  menuData: any;
+  // menuData: any = {title_menu: "menu prueba", description_menu: "este es el menu de prueba", id_menu: '1'}
+  constructor( 
+    private route: ActivatedRoute, 
+    private nav: NavController, 
+    private menu: MenuService){}
 
   ngOnInit() {
     this.menuId = this.route.snapshot.paramMap.get('menuId');
+    this.getMenuData();
   }
 
   goBack(){
@@ -25,7 +29,7 @@ export class SubmenuPage implements OnInit {
 
   getMenuData(){ 
     this.menu.getMenusByParent(this.menuId).subscribe((results) => {
-    this.menuData = results.data.menu;
-  })
-}
+      this.menuData = results.data.menu;
+    })
+  }
 }

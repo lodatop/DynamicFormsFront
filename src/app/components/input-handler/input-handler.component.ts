@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { InputService } from '../../services/input/input.service';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
 import { from } from 'rxjs';
 
 @Component({
@@ -11,16 +11,25 @@ import { from } from 'rxjs';
 export class InputHandlerComponent implements OnInit {
 
   @Input() formId: string;
-  private inputList: any;
+  // inputList: any = [{id_input: 1,label_input: 'a label'},{id_input: 2,label_input: 'a label2'}];
+  inputList: any = [];
   addInputToForm : FormGroup;
+  inputId: AbstractControl;
+
   constructor(private input: InputService, public formBuilder: FormBuilder){
     this.addInputToForm = this.formBuilder.group({
       inputId: ['', Validators.required]
     });
+    
+    this.inputId = this.addInputToForm.controls['inputId'];
   }
 
   ngOnInit(){
-    this.getInputs()
+    this.getInputs();
+  }
+
+  noDoCheck(){
+    this.getInputs();
   }
 
   getInputs(){
@@ -30,12 +39,18 @@ export class InputHandlerComponent implements OnInit {
   }
 
   addInput(){
-    
     if(this.addInputToForm.valid){
-      this.input.addInputToForm(this.formId, this.addInputToForm.get('inputId').value).subscribe((results)=>{
-        alert('Input was added')
+      console.log(this.inputId.value);
+      this.input.addInputToForm(this.formId, this.inputId.value).subscribe((results)=>{
+        this.getInputs();
       })
     }
+  }
+
+  inputAdded(input: any){
+    // this.inputList.push({...input, id_input: 3})
+    // this.getInputs();
+    console.log(input)
   }
 
 }

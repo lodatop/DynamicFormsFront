@@ -21,9 +21,9 @@
       </ion-input>
     </ion-item>
     <ion-item *ngIf="menuDescription.hasError('required') && menuDescription.touched">
-      <p style="margin-left: 15px; font-size: 13px;">Please for the love of God write the menus description.</p>
+      <p style="margin-left: 15px; font-size: 13px;">Please for the love of God write the menu description.</p>
     </ion-item>
   </ion-list>
-  <ion-button type="submit" expand="block" (click)='createMenu()' [disabled]="isDisabled">Create</ion-button>
+  <ion-button expand="block" (click)='createMenu()' [disabled]="isDisabled">Create</ion-button>
 
 </form>

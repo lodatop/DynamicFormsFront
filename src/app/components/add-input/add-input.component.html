@@ -1,16 +1,19 @@
 <form novalidate [formGroup]="addInput">
-
+  
   <ion-item>
-    <ion-label stacked>Input label</ion-label>
-    <ion-input formControlName="label"></ion-input>
+    <ion-label position="floating">Input label</ion-label>
+    <ion-input 
+      type="text" 
+      formControlName="label" 
+      required="true">
+    </ion-input>
+  </ion-item>
+  <ion-item *ngIf="label.hasError('required') && label.touched">
+    <p style="margin-left: 15px; font-size: 13px;">Please for the love of God write the label for your input.</p>
   </ion-item>
 
-  <ion-text *ngIf="addInput.get('label').hasError('required')">
-    Please for the love of God write the label for your input.
-  </ion-text>
-
   <ion-item>
-    <ion-label>Add existing input</ion-label>
+    <ion-label>Select input type</ion-label>
     <ion-select placeholder="select input..." formControlName="type">
       <ion-select-option value='number'>Number</ion-select-option>
       <ion-select-option value='text'>Text</ion-select-option>
@@ -20,10 +23,6 @@
     </ion-select>
   </ion-item>
 
-  <ion-text *ngIf="addInput.get('type').hasError('required')">
-    Please for the love of God select an input type.
-  </ion-text>
-
-  <ion-button (click)='createInput()'>Create input</ion-button>
+  <ion-button expand="block" (click)='createInput()' [disabled]="isDisabled">Create input</ion-button>
 
 </form>
