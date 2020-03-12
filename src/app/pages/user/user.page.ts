@@ -10,12 +10,13 @@ import { NavController } from '@ionic/angular';
 export class UserPage implements OnInit {
 
   userData = {};
-
+  userIsAdm: boolean;
   constructor(private auth: AuthService, private nav: NavController) { 
     this.userData = {...this.auth.getUserData()}
    }
 
   ngOnInit() {
+    this.userIsAdm = this.auth.userIsAdmin()
   }
 
   logout(){

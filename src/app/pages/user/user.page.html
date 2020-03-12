@@ -6,7 +6,7 @@
 
 <ion-content>
   <app-update-user></app-update-user>
-  <ion-item>
+  <ion-item *ngIf="userIsAdm" style="width: 50%;">
     <ion-text style="margin: auto;">
       <a [routerLink]="['/register/admin']" >Register Admin</a>
     </ion-text>
