@@ -27,7 +27,7 @@ export class MenuItemsComponent implements OnInit {
         if (e instanceof NavigationEnd) {
             this.getMenus()
         }
-     });
+      });
   }
 
   ngOnInit() {
