@@ -1,8 +1,0 @@
-{
-  "appId": "com.firstproyect.wamt",
-  "appName": "p1Front",
-  "bundledWebRuntime": false,
-  "npmClient": "npm",
-  "webDir": "www",
-  "cordova": {}
-}
