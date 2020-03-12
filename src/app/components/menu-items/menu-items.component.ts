@@ -47,7 +47,9 @@ export class MenuItemsComponent implements OnInit {
     console.log(item)
   }
 
-  deleteMenu(item){
-    console.log(item)
+  deleteMenu(menuId: string){
+    this.menu.deleteMenu(menuId).subscribe(()=>{
+      this.getMenus()
+    })
   }
 }
