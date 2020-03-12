@@ -4,17 +4,11 @@
       <ion-label stacked>Form Title</ion-label>
       <ion-input type="text" formControlName="formTitle"></ion-input>
   </ion-item>
-  <ion-text *ngIf="formCreation.get('formTitle').hasError('required')">
-    Please for the love of God write the forms title.
-  </ion-text>
 
   <ion-item>
     <ion-label stacked>Form Description</ion-label>
     <ion-input type="text" formControlName="formDescription"></ion-input>
   </ion-item>
-  <ion-text *ngIf="formCreation.get('formDescription').hasError('required')">
-    Please for the love of God write the forms description.
-  </ion-text>
 
   <ion-button [disabled]="!isEnabled" (click)='createForm()'>Create</ion-button>
 

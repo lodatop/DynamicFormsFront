@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router'
 })
 export class AddPage implements OnInit {
 
-  private menuId: string;
+  public menuId: string;
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
