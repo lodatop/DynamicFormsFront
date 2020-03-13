@@ -29,40 +29,40 @@ export class LoginPage implements OnInit, DoCheck {
     }
   }
   
-  login() {
-    this.loadingCtrl
-      .create({ keyboardClose: true, message: 'Logging in...' })
-      .then(loadingEl => {
-        loadingEl.present();
-        this.auth.onLogin(this.username, this.password).subscribe(async (data) => {
-          loadingEl.dismiss();
-          if (data.status === 200) {
-            this.auth.userIsLoged().then(async ()=>{
-              const toast = await this.toast.create({
-                message: `Welcome ${this.username}`,
-                duration: 2000,
-                color: 'primary'
-              });
-              toast.present();
-              this.nav.navigateRoot(['/views/menu'])
-            })
-        } else {
-            loadingEl.dismiss();
-            const toast = await this.toast.create({
-              message: `Failed login`,
-              duration: 2000,
-              color: 'primary'
-            });
-            toast.present();
-        }
-        });
-      })
-    // await this.auth.login();
-    // this.auth.userIsLoged().then(data => {
-    //   if(data){
-    //     this.nav.navigateRoot(['/views/menu'])
-    //   }
-    // });
+  async login() {
+    // this.loadingCtrl
+    //   .create({ keyboardClose: true, message: 'Logging in...' })
+    //   .then(loadingEl => {
+    //     loadingEl.present();
+    //     this.auth.onLogin(this.username, this.password).subscribe(async (data) => {
+    //       loadingEl.dismiss();
+    //       if (data.status === 200) {
+    //         this.auth.userIsLoged().then(async ()=>{
+    //           const toast = await this.toast.create({
+    //             message: `Welcome ${this.username}`,
+    //             duration: 2000,
+    //             color: 'primary'
+    //           });
+    //           toast.present();
+    //           this.nav.navigateRoot(['/views/menu'])
+    //         })
+    //     } else {
+    //         loadingEl.dismiss();
+    //         const toast = await this.toast.create({
+    //           message: `Failed login`,
+    //           duration: 2000,
+    //           color: 'primary'
+    //         });
+    //         toast.present();
+    //     }
+    //     });
+    //   })
+    await this.auth.login();
+    this.auth.userIsLoged().then(data => {
+      if(data){
+        this.nav.navigateRoot(['/views/menu'])
+      }
+    });
   }
 
 }

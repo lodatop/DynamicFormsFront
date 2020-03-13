@@ -2,18 +2,18 @@
 
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="menu">
-      <ion-icon name="menu"></ion-icon>
-      <ion-label>Home</ion-label>
+      <ion-icon name="menu" [ngStyle]="{'color': darkMode === true? 'white' : 'black'}"></ion-icon>
+      <ion-label [ngStyle]="{'color': darkMode === true? 'white' : 'black'}">Home</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="stats">
-      <ion-icon name="podium"></ion-icon>
-      <ion-label>Stats</ion-label>
+      <ion-icon name="podium" [ngStyle]="{'color': darkMode === true? 'white' : 'black'}"></ion-icon>
+      <ion-label [ngStyle]="{'color': darkMode === true? 'white' : 'black'}">Stats</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="user">
-      <ion-icon name="person"></ion-icon>
-      <ion-label>User</ion-label>
+      <ion-icon name="person" [ngStyle]="{'color': darkMode === true? 'white' : 'black'}"></ion-icon>
+      <ion-label [ngStyle]="{'color': darkMode === true? 'white' : 'black'}">User</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 
