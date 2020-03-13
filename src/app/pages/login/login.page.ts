@@ -55,8 +55,6 @@ export class LoginPage implements OnInit, DoCheck {
             });
             toast.present();
         }
-<<<<<<< HEAD
-=======
         },async ()=> {
             loadingEl.dismiss();
             const toast = await this.toast.create({
@@ -65,7 +63,6 @@ export class LoginPage implements OnInit, DoCheck {
               color: 'primary'
             });
             toast.present();
->>>>>>> develop
         });
       })
     // await this.auth.login();
