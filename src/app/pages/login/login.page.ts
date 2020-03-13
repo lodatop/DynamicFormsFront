@@ -55,6 +55,14 @@ export class LoginPage implements OnInit, DoCheck {
             });
             toast.present();
         }
+        },async ()=> {
+            loadingEl.dismiss();
+            const toast = await this.toast.create({
+              message: `Failed login`,
+              duration: 2000,
+              color: 'primary'
+            });
+            toast.present();
         });
       })
     // await this.auth.login();

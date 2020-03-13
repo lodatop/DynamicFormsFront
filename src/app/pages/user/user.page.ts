@@ -13,6 +13,7 @@ export class UserPage implements OnInit {
   userData = {};
   userIsAdm: boolean;
   darkMode: boolean;
+  darkModeAux: boolean;
   constructor(
     private auth: AuthService, 
     private nav: NavController, 
@@ -28,7 +29,11 @@ export class UserPage implements OnInit {
   }
 
   changeDarkMode() {
-    this.theme.changeTheme();
+    this.darkModeAux = this.theme.darkMode;
+    if(this.darkMode != this.darkModeAux){
+      this.theme.changeTheme();
+    }
+    
   }
 
   registerAdmin(){
