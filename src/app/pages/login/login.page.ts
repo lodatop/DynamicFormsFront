@@ -34,7 +34,7 @@ export class LoginPage implements OnInit, DoCheck {
       .create({ keyboardClose: true, message: 'Logging in...' })
       .then(loadingEl => {
         loadingEl.present();
-        this.auth.onLogin(this.username, this.password).subscribe((data) => {
+        this.auth.onLogin(this.username, this.password).subscribe(async (data) => {
           loadingEl.dismiss();
           if (data.status === 200) {
             this.auth.userIsLoged().then(async ()=>{
@@ -46,6 +46,14 @@ export class LoginPage implements OnInit, DoCheck {
               toast.present();
               this.nav.navigateRoot(['/views/menu'])
             })
+        } else {
+            loadingEl.dismiss();
+            const toast = await this.toast.create({
+              message: `Failed login`,
+              duration: 2000,
+              color: 'primary'
+            });
+            toast.present();
         }
         });
       })
