@@ -1,6 +1,6 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register-admin',
@@ -17,7 +17,10 @@ export class RegisterAdminPage implements OnInit, DoCheck {
   age: number;
   isDisabled: boolean = true;
 
-  constructor(private auth: AuthService, private nav: NavController) { }
+  constructor(
+    private auth: AuthService, 
+    private nav: NavController, 
+    private toast: ToastController) { }
 
   ngOnInit() {
   }
@@ -31,7 +34,13 @@ export class RegisterAdminPage implements OnInit, DoCheck {
   }
 
   registerAdmin() {
-    this.auth.onAdminRegister(this.name, this.username, this.email, this.password, this.age, this.gender).subscribe((data) => {
+    this.auth.onAdminRegister(this.name, this.username, this.email, this.password, this.age, this.gender).subscribe(async (data) => {
+      const toast = await this.toast.create({
+        message: 'Admin registered succesfully',
+        duration: 2000,
+        color: 'primary'
+      });
+      toast.present();
       this.nav.back();
     })
   }

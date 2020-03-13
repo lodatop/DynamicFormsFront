@@ -37,7 +37,13 @@ export class LoginPage implements OnInit, DoCheck {
         this.auth.onLogin(this.username, this.password).subscribe((data) => {
           loadingEl.dismiss();
           if (data.status === 200) {
-            this.auth.userIsLoged().then(()=>{
+            this.auth.userIsLoged().then(async ()=>{
+              const toast = await this.toast.create({
+                message: `Welcome ${this.username}`,
+                duration: 2000,
+                color: 'primary'
+              });
+              toast.present();
               this.nav.navigateRoot(['/views/menu'])
             })
         }

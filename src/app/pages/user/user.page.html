@@ -6,14 +6,17 @@
 
 <ion-content>
   <app-update-user></app-update-user>
-  <ion-item>
-    <ion-label>Dark mode</ion-label>
+  <ion-item class="ion-align-items-center">
+    <ion-label><ion-icon name='moon' style="margin-right: 10px;"></ion-icon>Dark mode</ion-label>
     <ion-toggle [(ngModel)]="darkMode" (ionChange)='changeDarkMode()'></ion-toggle>
   </ion-item>
-  <ion-item *ngIf="userIsAdm" style="width: 50%;">
-    <ion-text style="margin: auto;">
-      <a [routerLink]="['/register/admin']" >Register Admin</a>
-    </ion-text>
-  </ion-item>
+  <ion-button 
+    *ngIf="userIsAdm" 
+    expand="block" 
+    color="success"
+    (click)="registerAdmin()">
+      <ion-icon name="person-add" style="margin-right: 10px;"></ion-icon>
+      Register Admin
+    </ion-button>
   <ion-button class="logout-button" expand="block" color="danger" (click)="logout()">Log Out</ion-button>
 </ion-content>

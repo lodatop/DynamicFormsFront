@@ -24,7 +24,7 @@
       </ion-input>
     </ion-item>
     <ion-item *ngIf="name.hasError('required') && name.touched">
-      <p style="margin-left: 15px; font-size: 13px;">Please for the love of God write the username.</p>
+      <p style="margin-left: 15px; font-size: 13px;">Please for the love of God write your name.</p>
     </ion-item>
 
     <ion-item>
@@ -38,7 +38,7 @@
       </ion-input>
     </ion-item>
     <ion-item *ngIf="email.hasError('required') && email.touched">
-      <p style="margin-left: 15px; font-size: 13px;">Please for the love of God write the username.</p>
+      <p style="margin-left: 15px; font-size: 13px;">Please for the love of God write your email.</p>
     </ion-item>
 
     <ion-item>
@@ -50,10 +50,11 @@
         required="true">
         <ion-select-option value='male'>Male</ion-select-option>
         <ion-select-option value='female'>Female</ion-select-option>
+        <ion-select-option value='other'>Other</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item *ngIf="gender.hasError('required') && gender.touched">
-      <p style="margin-left: 15px; font-size: 13px;">Please for the love of God write the username.</p>
+      <p style="margin-left: 15px; font-size: 13px;">Please for the love of God choose a gender.</p>
     </ion-item>
     
     <ion-item>
@@ -66,7 +67,7 @@
       </ion-input>
     </ion-item>
     <ion-item *ngIf="age.hasError('required') && age.touched">
-      <p style="margin-left: 15px; font-size: 13px;">Please for the love of God write the username.</p>
+      <p style="margin-left: 15px; font-size: 13px;">Please for the love of God write your age.</p>
     </ion-item>
 
   </ion-list>
