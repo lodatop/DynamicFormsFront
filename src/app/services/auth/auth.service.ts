@@ -32,13 +32,13 @@ export class AuthService {
     return this.userData.admin_user;
   }
 
-  async logout(){
-    await Storage.clear();
-  }
+  // async logout(){
+  //   await Storage.clear();
+  // }
 
-  async login(){
-    this.saveUser({name_user: "Wisam", username_user: "wisim", admin_user: true})
-  }
+  // async login(){
+  //   this.saveUser({name_user: "Wisam", username_user: "wisim", admin_user: true})
+  // }
 
   getUser(){
     const serverUrl = this.url;
