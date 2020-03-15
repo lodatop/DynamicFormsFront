@@ -32,14 +32,6 @@ export class AuthService {
     return this.userData.admin_user;
   }
 
-  // async logout(){
-  //   await Storage.clear();
-  // }
-
-  // async login(){
-  //   this.saveUser({name_user: "Wisam", username_user: "wisim", admin_user: true})
-  // }
-
   getUser(){
     const serverUrl = this.url;
     return this.http.get<Response>(`${serverUrl}/profile`,{withCredentials: true});
@@ -117,7 +109,7 @@ export class AuthService {
       }),
       withCredentials: true
     };
-   return this.http.put<Response>(`${serverUrl}/profile/update`, JSON.stringify(body), httpOptions);
+   return this.http.put<Response>(`${serverUrl}/profile/`, JSON.stringify(body), httpOptions);
   }
 
   onLogout() {

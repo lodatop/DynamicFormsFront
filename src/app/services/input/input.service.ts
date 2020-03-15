@@ -54,19 +54,4 @@ export class InputService {
   
   }
 
-  deleteInputFromForm(optionid: string, inputid: string){
-    const serverUrl = this.url;
-    const formId = optionid;
-    const body = {
-      input : inputid
-    }
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      }),
-      withCredentials: true
-    };
-    return this.http.post<Response>(`${serverUrl}/form/${formId}/input/delete`, JSON.stringify(body), httpOptions);
-  
-  }
 }

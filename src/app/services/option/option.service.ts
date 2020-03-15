@@ -15,7 +15,7 @@ export class OptionService {
   deleteForm(formid: string){
     const serverUrl = this.url;
     const formId = formid;
-    return this.http.delete<Response>(`${serverUrl}/form/${formId}/delete`, {withCredentials: true});
+    return this.http.delete<Response>(`${serverUrl}/form/${formId}`, {withCredentials: true});
   }
 
   createForm(menuid: string, title: string, description: string){

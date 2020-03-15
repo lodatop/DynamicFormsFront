@@ -41,7 +41,6 @@ export class MenuItemsComponent implements OnInit {
   getMenus(){
    this.menu.getMenusWithoutParents().subscribe((results) => {
       this.list = results;
-      console.log(this.list)
     })
   }
 

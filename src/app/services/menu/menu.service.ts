@@ -25,7 +25,7 @@ export class MenuService {
   deleteMenu(menuid: string){
     const serverUrl = this.url;
     const id = menuid;
-    return this.http.delete<Response>(`${serverUrl}/menu/${id}/delete`,  {withCredentials: true});
+    return this.http.delete<Response>(`${serverUrl}/menu/${id}`,  {withCredentials: true});
   }
 
   getMenusByParent(menuid: string){
