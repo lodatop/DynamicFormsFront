@@ -44,6 +44,6 @@ export class AnswerService {
       }),
       withCredentials: true
     };
-    return this.http.get<Response>(`${serverUrl}/form/${formId}/answer/delete`, httpOptions);
+    return this.http.delete<Response>(`${serverUrl}/form/${formId}/answer/delete`, httpOptions);
   }
 }

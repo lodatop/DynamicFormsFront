@@ -15,7 +15,7 @@ export class OptionService {
   deleteForm(formid: string){
     const serverUrl = this.url;
     const formId = formid;
-    return this.http.get<Response>(`${serverUrl}/form/${formId}/delete`, {withCredentials: true});
+    return this.http.delete<Response>(`${serverUrl}/form/${formId}/delete`, {withCredentials: true});
   }
 
   createForm(menuid: string, title: string, description: string){
@@ -42,7 +42,7 @@ export class OptionService {
 
   getForm(formId: string){
     const serverUrl = this.url;
-    return this.http.get<Response>(`${serverUrl}/form/${formId}/form`, {withCredentials: true});
+    return this.http.get<Response>(`${serverUrl}/form/${formId}`, {withCredentials: true});
   }
 
   getOption(){

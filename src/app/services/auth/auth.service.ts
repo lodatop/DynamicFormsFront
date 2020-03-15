@@ -42,7 +42,7 @@ export class AuthService {
 
   getUser(){
     const serverUrl = this.url;
-    return this.http.get<Response>(`${serverUrl}/user`,{withCredentials: true});
+    return this.http.get<Response>(`${serverUrl}/profile`,{withCredentials: true});
   }
 
   onLogin(username: string , password: string) {
@@ -117,7 +117,7 @@ export class AuthService {
       }),
       withCredentials: true
     };
-   return this.http.post<Response>(`${serverUrl}/profile/update`, JSON.stringify(body), httpOptions);
+   return this.http.put<Response>(`${serverUrl}/profile/update`, JSON.stringify(body), httpOptions);
   }
 
   onLogout() {

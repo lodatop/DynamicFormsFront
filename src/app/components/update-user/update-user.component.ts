@@ -22,7 +22,7 @@ export class UpdateUserComponent implements OnInit {
     this.updateUser = this.formBuilder.group({
       username: ['', Validators.required],
       name: ['', Validators.required],
-      email: ['', Validators.required, Validators.email],
+      email: ['', [Validators.required, Validators.email]],
       gender: ['', Validators.required],
       age: ['', Validators.required]
     });

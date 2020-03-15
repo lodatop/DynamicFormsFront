@@ -12,14 +12,9 @@ export class MenuService {
   url = environment.url;
   constructor( private http: HttpClient, private loadingCtrl: LoadingController) { }
 
-  getMenu(menuid: string){
-    const serverUrl = this.url;
-    return this.http.get<Response>(`${serverUrl}/menu/menu/${menuid}`,  {withCredentials: true});
-  }
-
   getMenus(){
     const serverUrl = this.url;
-    return this.http.get<Response>(`${serverUrl}/menu/menu`,  {withCredentials: true});
+    return this.http.get<Response>(`${serverUrl}/menu/`,  {withCredentials: true});
   }
 
   getMenusWithoutParents(){
@@ -30,7 +25,7 @@ export class MenuService {
   deleteMenu(menuid: string){
     const serverUrl = this.url;
     const id = menuid;
-    return this.http.get<Response>(`${serverUrl}/menu/${id}/delete`,  {withCredentials: true});
+    return this.http.delete<Response>(`${serverUrl}/menu/${id}/delete`,  {withCredentials: true});
   }
 
   getMenusByParent(menuid: string){
@@ -52,6 +47,6 @@ export class MenuService {
       }),
       withCredentials: true
     };
-    return this.http.post<Response>(`${serverUrl}/menu/menu`, JSON.stringify(body), httpOptions);
+    return this.http.post<Response>(`${serverUrl}/menu/`, JSON.stringify(body), httpOptions);
   }
 }

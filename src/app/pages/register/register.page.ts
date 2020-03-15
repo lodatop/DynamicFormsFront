@@ -43,6 +43,13 @@ export class RegisterPage implements OnInit, DoCheck {
       });
       toast.present();
       this.nav.navigateRoot(['/login']);
+    }, async () => {
+      const toast = await this.toast.create({
+        message: 'Registration failed',
+        duration: 2000,
+        color: 'primary'
+      });
+      toast.present();
     })
   }
 

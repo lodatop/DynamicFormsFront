@@ -20,7 +20,7 @@ export class InputService {
   getInputsByForm(formid: string){
     const serverUrl = this.url;
     const id = formid;
-    return this.http.get<Response>(`${serverUrl}/form/${id}`, {withCredentials: true});
+    return this.http.get<Response>(`${serverUrl}/form/${id}/input`, {withCredentials: true});
   }
 
   createInput(label: string, type: string){
