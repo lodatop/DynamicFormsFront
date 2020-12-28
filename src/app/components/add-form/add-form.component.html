@@ -1,0 +1,43 @@
+<form novalidate [formGroup]="formCreation" *ngIf="!formCreated">
+
+  <ion-list>
+    <ion-item>
+        <ion-label position="floating">Form Title</ion-label>
+        <ion-input 
+          type="text" 
+          formControlName="formTitle" 
+          required="true">
+        </ion-input>
+    </ion-item>
+    <ion-item *ngIf="formTitle.hasError('required') && formTitle.touched">
+      <p style="margin-left: 15px; font-size: 13px;">Please for the love of God write the form title.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Form Description</ion-label>
+      <ion-input 
+        type="text" 
+        formControlName="formDescription" 
+        required="true">
+      </ion-input>
+    </ion-item>
+    <ion-item *ngIf="formDescription.hasError('required') && formDescription.touched">
+      <p style="margin-left: 15px; font-size: 13px;">Please for the love of God write the form description.</p>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="block" (click)='createForm()' [disabled]="isDisabled">Create</ion-button>
+
+</form>
+
+<div *ngIf='formCreated'>
+  <ion-list style="margin-bottom: 5px;">
+    <ion-item>
+        <ion-label>{{formTitle.value}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>{{formDescription.value}}</ion-label>
+    </ion-item>
+  </ion-list>
+  <app-input-handler [formId]='formId'></app-input-handler>
+</div>

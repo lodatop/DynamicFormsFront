@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-header style="padding-bottom: 0;">
+      <ion-card-subtitle>Ingrese sus datos</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">Name:</ion-label>
+        <ion-input
+          [(ngModel)]="name"
+          type="text"
+          placeholder="Enter name..."
+          required="true">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Username:</ion-label>
+        <ion-input
+          [(ngModel)]="username"
+          type="text"
+          placeholder="Enter username..."
+          required="true">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Email:</ion-label>
+        <ion-input
+          [(ngModel)]="email"
+          type="email"
+          placeholder="Enter email..."
+          required="true">
+        </ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="stacked">Gender:</ion-label>
+        <ion-select
+          [(ngModel)]="gender"
+          type="password"
+          placeholder="Enter your gender..."
+          required="true">
+          <ion-select-option value="female">Female</ion-select-option>
+          <ion-select-option value="male">Male</ion-select-option>
+          <ion-select-option value="other">Other</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Age:</ion-label>
+        <ion-input
+          [(ngModel)]="age"
+          type="number"
+          placeholder="Enter your age..."
+          required="true">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Password:</ion-label>
+        <ion-input
+          [(ngModel)]="password"
+          type="password"
+          placeholder="Enter password..."
+          required="true">
+        </ion-input>
+      </ion-item>
+
+      <ion-button 
+        [disabled]="isDisabled" 
+        (click)="register()" 
+        expand="block" 
+        color="primary" 
+        size="medium"
+        style="margin-top: 10px;">Register</ion-button>
+      <ion-item >
+        <ion-text style="margin: auto;">
+          <a [routerLink]="['/login']" >Go back to login</a>
+        </ion-text>
+      </ion-item>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

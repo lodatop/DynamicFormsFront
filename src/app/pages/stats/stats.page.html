@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-toolbar color=primary >
+    <ion-title>Statistics</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-text *ngIf="mostVisited.completed_form > 0">{{mostVisited.title_form}} is the most visited</ion-text>
+    <div *ngIf="chart" style="margin-top: 40%;">
+      <canvas id="canvas" width="300" #canvas></canvas>
+    </div>
+</ion-content>

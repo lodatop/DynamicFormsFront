@@ -1,0 +1,29 @@
+<form [formGroup]="menuCreation">
+  <ion-list>
+    <ion-item>
+        <ion-label position="floating">Menu Title</ion-label>
+        <ion-input 
+          type="text" 
+          formControlName="menuTitle" 
+          required="true">
+        </ion-input>
+    </ion-item>
+    <ion-item *ngIf="menuTitle.hasError('required') && menuTitle.touched">
+      <p style="margin-left: 15px; font-size: 13px;">Please for the love of God write the menus title.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Menu Description</ion-label>
+      <ion-input 
+        type="text" 
+        formControlName="menuDescription" 
+        required="true">
+      </ion-input>
+    </ion-item>
+    <ion-item *ngIf="menuDescription.hasError('required') && menuDescription.touched">
+      <p style="margin-left: 15px; font-size: 13px;">Please for the love of God write the menu description.</p>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="block" (click)='createMenu()' [disabled]="isDisabled">Create</ion-button>
+
+</form>
